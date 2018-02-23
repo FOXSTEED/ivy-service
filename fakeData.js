@@ -1,6 +1,10 @@
 var faker = require('faker');
 fakeData = [];
 
+function getRandomNum(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
 for (let listingId = 0; listingId < 200; listingId++){
     listingQuestionsAndAnswers = {}
 
@@ -27,8 +31,9 @@ for (let listingId = 0; listingId < 200; listingId++){
             answer.firstName = faker.name.firstName();
             answer.lastName = faker.name.lastName();
             answer.flag = faker.random.boolean();
-            answer.upvotes = faker.random.number();
-            answer.downvotes = faker.random.number();
+            answer.upvotes = getRandomNum(0, 12);
+            answer.downvotes = getRandomNum(0, 7);
+            answer.answer = faker.lorem.paragraph();
 
             question.answers.push(answer);
         }
