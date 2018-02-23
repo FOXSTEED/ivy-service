@@ -5,17 +5,19 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 const dumbData = require('../dumbData');
+const data = require('../fakeData')
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 app.use(express.static('../client/public'))
 
+
 app.get('/test', (req, res) => {
     if (!dumbData.simpleData){
         res.status(404).json({message: 'no data here'})
     }
-    res.json(dumbData.simpleData);
+    res.json(data.fakeData);
 });
 
 app.get('/test/:id', (req, res) => {
@@ -29,4 +31,5 @@ app.get('/test/:id', (req, res) => {
 })
 
 app.listen(port, () => console.log('Example app listening on port 3000!')); 
+
 
