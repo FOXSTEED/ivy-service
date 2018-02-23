@@ -24,3 +24,5 @@ coverage
 build/
 dist/
 
+# ignore bundle.js file
+bundle.js
