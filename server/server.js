@@ -13,18 +13,18 @@ app.use(cors());
 app.use(express.static('../client/public'))
 
 
-app.get('/test', (req, res) => {
-    if (!dumbData.simpleData){
+app.get('/listing', (req, res) => {
+    if (!data.fakeData){
         res.status(404).json({message: 'no data here'})
     }
     res.json(data.fakeData);
 });
 
-app.get('/test/:id', (req, res) => {
+app.get('/listing/:id', (req, res) => {
     const requestId = req.params.id;
 
-    let item = dumbData.simpleData.filter((question) => {
-        return requestId == question.id;
+    let item = data.fakeData.filter((questions) => {
+        return requestId == questions.id;
     })
 
     res.json(item);
