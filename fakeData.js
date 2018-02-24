@@ -5,16 +5,16 @@ function getRandomNumBetween(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-for (let attraction = 0; attraction < 200; attraction++){
-    let attractionQuestionsAndAnswers = {};
+for (let i = 0; i < 200; i++){
+    let attraction = {};
 
-    attractionQuestionsAndAnswers.id = attraction;
-    attractionQuestionsAndAnswers.questions = [];
+    attraction.id = i;
+    attraction.questions = [];
 
-    for (let i = 0; i < getRandomNumBetween(1, 30); i++){
+    for (let j = 0; j < getRandomNumBetween(1, 30); j++){
         let question = {};
 
-        question.questionNumber = i;
+        question.questionNumber = j;
         question.username = faker.internet.userName();
         question.firstName = faker.name.firstName();
         question.lastName = faker.name.lastName();
@@ -24,10 +24,10 @@ for (let attraction = 0; attraction < 200; attraction++){
         question.question = faker.lorem.paragraph();
         question.answers = [];
 
-        for (let j = 0; j < getRandomNumBetween(1, 10); j++){
+        for (let k = 0; k < getRandomNumBetween(1, 10); k++){
             let answer = {};
 
-            answer.answerNumber = j;
+            answer.answerNumber = k;
             answer.firstName = faker.name.firstName();
             answer.lastName = faker.name.lastName();
             answer.flag = faker.random.boolean();
@@ -37,9 +37,9 @@ for (let attraction = 0; attraction < 200; attraction++){
 
             question.answers.push(answer);
         }
-        attractionQuestionsAndAnswers.questions.push(question);
+        attraction.questions.push(question);
     }
-    attractions.push(attractionQuestionsAndAnswers);
+    attractions.push(attraction);
 }
 
 
