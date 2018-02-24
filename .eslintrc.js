@@ -6,5 +6,9 @@
  */
 
 module.exports = {
-  extends: 'airbnb'
+  "extends": 'airbnb',
+  rules: {
+    "no-console": "off",
+    "indent": "off"
+  }
 };

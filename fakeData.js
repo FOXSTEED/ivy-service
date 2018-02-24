@@ -1,18 +1,19 @@
 const faker = require('faker');
-let attractions = [];
+
+const attractions = [];
 
 function getRandomNumBetween(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+    return Math.floor(Math.random() * ((max - min) + min));
 }
 
-for (let i = 0; i < 200; i++){
-    let attraction = {};
+for (let i = 0; i < 200; i += 1) {
+    const attraction = {};
 
     attraction.id = i;
     attraction.questions = [];
 
-    for (let j = 0; j < getRandomNumBetween(1, 30); j++){
-        let question = {};
+    for (let j = 0; j < getRandomNumBetween(1, 30); j += 1) {
+        const question = {};
 
         question.questionNumber = j;
         question.username = faker.internet.userName();
@@ -24,8 +25,8 @@ for (let i = 0; i < 200; i++){
         question.question = faker.lorem.paragraph();
         question.answers = [];
 
-        for (let k = 0; k < getRandomNumBetween(1, 10); k++){
-            let answer = {};
+        for (let k = 0; k < getRandomNumBetween(1, 10); k += 1) {
+            const answer = {};
 
             answer.answerNumber = k;
             answer.firstName = faker.name.firstName();
