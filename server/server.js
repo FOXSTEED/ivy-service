@@ -2,31 +2,32 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+
 const app = express();
 const port = 3000;
-const dumbData = require('../dumbData');
+const attractions = require('../fakeData');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use(express.static('../client/public'))
 
-app.get('/test', (req, res) => {
-    if (!dumbData.simpleData){
-        res.status(404).json({message: 'no data here'})
+
+app.get('/attractions', (req, res) => {
+    if (!attractions) {
+        res.status(404).json({ message: 'no data here' });
     }
-    res.json(dumbData.simpleData);
+    res.json(attractions);
 });
 
-app.get('/test/:id', (req, res) => {
-    const requestId = req.params.id;
+app.get('/attractions/:id', (req, res) => {
+    const requestId = Number(req.params.id);
 
-    let item = dumbData.simpleData.filter((question) => {
-        return requestId == question.id;
-    })
+    const matchingAttraction = attractions.filter((attraction) => {
+        return requestId === attraction.id;
+    });
 
-    res.json(item);
+    res.json(matchingAttraction);
 })
 
-app.listen(port, () => console.log('Example app listening on port 3000!')); 
-
+app.listen(port, () => { console.log('listening on port 3000'); });
