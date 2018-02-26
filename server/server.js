@@ -4,12 +4,12 @@ const cors = require('cors');
 const database = require('../database/data.js');
 
 const app = express();
-const port = 3000;
+const port = 3004;
 
+app.use(express.static('../client/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use(express.static('../client/public'));
 
 app.get('/attractions', (req, res) => {
   database.getAll((err, data) => {
@@ -32,4 +32,4 @@ app.get('/attractions/:id', (req, res) => {
   });
 });
 
-app.listen(port, () => console.log('listening on port 3000'));
+app.listen(port, () => console.log(`listening on port ${port}`));
