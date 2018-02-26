@@ -9,6 +9,6 @@ module.exports = {
   "extends": 'airbnb',
   rules: {
     "no-console": "off",
-    "indent": "off"
+   // "indent": "off"
   }
 };
