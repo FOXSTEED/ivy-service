@@ -4,7 +4,6 @@ import Avatar from './avatar.jsx';
 
 
 const Question = (props) => {
-  console.log('question')
   return (
     <div className="question">
 

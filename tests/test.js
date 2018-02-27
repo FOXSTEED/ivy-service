@@ -47,4 +47,3 @@ describe('Entries in database', () => {
     database.getById(100, callback);
   });
 });
-

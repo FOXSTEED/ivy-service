@@ -8,23 +8,45 @@ class QuestionsAndAnswers extends React.Component {
     super(props);
     this.state = {
       temporaryData: attractionsData[0],
+      realData: {},
+      loading: true
     };
   }
 
+  componentWillMount() {
+    //console.log(window.location.href, typeof window.location.href );
+    // http://localhost:3004/attractions/0
+    fetch('http://localhost:3004/attractions/199')
+      .then(res => res.json())
+      .then((result) => {
+        //console.log(result);
+        this.setState({ 
+          realData: result,
+          loading: false,
+        });
+      });
+  }
+
   render() {
-    console.log(this.state.temporaryData);
+    //console.log('real data ---->', this.state.realData);
+    if (this.state.loading) {
+      return (
+        <p>This thang is looooaaadddiinnnggguuuuhhh hold your horses!!!</p>
+      );
+    }
+
     return (
       <div className="main">
 
         <div className="questionsAndAnswers">
-          {this.state.temporaryData.questions.map( (question, index) => (
+          {this.state.realData.questions.map((question, index) => (
             <Question
               question={question}
               key={question.questionText}
             />
           ))}
         </div>
-        
+
       </div>
     );
   }
