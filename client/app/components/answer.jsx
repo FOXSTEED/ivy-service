@@ -5,7 +5,7 @@ const Answer = (props) => {
     <div className="answer">
       <br></br>
       <div>
-        -------- ANSWER {props.answer.answerText}
+      <h4>-------- ANSWER </h4> <p>{props.answer.answerText}</p>
       </div>
     </div>
   );

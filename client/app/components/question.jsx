@@ -9,12 +9,14 @@ const Question = (props) => {
 
       <Avatar
         avatar={props.question.avatar}
+        firstName={props.question.firstName}
+        lastName={props.question.lastName}
       />
 
       <br></br>
-      QUESTION: 
+      <h4>QUESTION:</h4>
       <br></br>
-      {props.question.questionText}
+      <p>{props.question.questionText}</p>
       <br></br>
 
       <div className="answers">
