@@ -22,6 +22,16 @@ const Question = (props) => {
         {props.question.date}
       </p>
 
+      <button className={styles.button}>
+        Answer
+      </button>
+
+      <br>
+      </br>
+
+      <button className={styles.showAnswersButton}>
+        Show all X answers
+      </button>
 
       <div className="answers">
         {props.question.answers.map((answer, index) => {
