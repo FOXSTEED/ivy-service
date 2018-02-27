@@ -28,6 +28,10 @@ function getById(id, callback) {
   QuestionModel.findOne({ id: id }, callback);
 }
 
+function removeAll(callback) {
+  QuestionModel.remove({}, callback);
+}
+
 exports.addToDb = addToDb;
 exports.getAll = getAll;
 exports.getById = getById;

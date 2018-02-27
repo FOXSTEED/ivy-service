@@ -1,22 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import attractionsData from '../../fakeData';
+import Question from './components/question.jsx';
 
-
-class App extends React.Component {
+class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      temporaryData: attractionsData[0],
     };
   }
 
   render() {
+    console.log(this.state.temporaryData);
     return (
-      <div>
-        <Questions/>
+      <div className="questionsAndAnswers">
+        {this.state.temporaryData.questions.map( (question, index) => (
+          <Question
+            question={question}
+            key={question.questionText}
+          />
+        ))}
       </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<QuestionsAndAnswers />, document.getElementById('questions-and-answers'));
