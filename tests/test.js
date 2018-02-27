@@ -2,8 +2,8 @@ const database = require('../database/data');
 
 describe('Entries in database', () => {
 
-  test('Should have 200 items corresponding to agreed upon number of attracitons', (done) => {
-    function callback (err, num) {
+  test('Should have 200 items corresponding to agreed upon number of attractions', (done) => {
+    function callback(err, num) {
       if (err) {
         console.log('error getting count');
       }
@@ -14,7 +14,7 @@ describe('Entries in database', () => {
   });
 
   test('Should return only one object when querying database by id', (done) => {
-    function callback (err, data) {
+    function callback(err, data) {
       if (err) {
         console.log('error retreiving data');
       }
@@ -25,7 +25,7 @@ describe('Entries in database', () => {
   });
 
   test('Fake Q&A data should contain at least one question per attraction', (done) => {
-    function callback (err, data) {
+    function callback(err, data) {
       if (err) {
         console.log('error retreiving data');
       }
@@ -37,7 +37,7 @@ describe('Entries in database', () => {
   });
 
   test('Fake Q&A data should contain at least one answer per question', (done) => {
-    function callback (err, data) {
+    function callback(err, data) {
       if (err) {
         console.log('error retreiving data');
       }
