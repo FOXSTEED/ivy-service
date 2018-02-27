@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from '../styling/app.css';
 
 const Avatar = (props) => {
   return (
-    <div className="avatar">
-      <img src={props.avatar}></img>
-      <h3>{`${props.firstName} ${props.lastName}`}</h3>
+    <div >
+      <img className={styles.avatarImage} src={props.avatar}></img>
+      <p className={styles.username}>{`${props.firstName} ${props.lastName}`}</p>
     </div>
   );
 };

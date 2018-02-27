@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import attractionsData from '../../fakeData';
 import Question from './components/question.jsx';
+import Header from './components/header.jsx';
 import styles from './styling/app.css';
 
 console.log(styles); 
@@ -31,7 +32,6 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
-    //console.log('real data ---->', this.state.realData);
     if (this.state.loading) {
       return (
         <p>This thang is looooaaadddiinnnggguuuuhhh hold your horses!!!</p>
@@ -40,16 +40,10 @@ class QuestionsAndAnswers extends React.Component {
 
     return (
       <div className={styles.main}>
-        
-        <h1 className={styles.title}>Questions & Answers</h1>
 
-        <button className={styles.button}>
-          Ask a question
-        </button>
+        <Header/>
 
-        <br></br>
-
-        <div className="questionsAndAnswers">
+        <div className={styles.questionsAndAnswers}>
           {this.state.realData.questions.map((question, index) => (
             <Question
               question={question}

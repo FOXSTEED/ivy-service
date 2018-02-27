@@ -13,11 +13,15 @@ const Question = (props) => {
         lastName={props.question.lastName}
       />
 
-      <br></br>
-      <h4>QUESTION:</h4>
-      <br></br>
-      <p className={styles.question}>{props.question.questionText}</p>
-      <br></br>
+
+      <p className={styles.question}>
+        {props.question.questionText}
+      </p>
+
+      <p className={styles.date}>
+        {props.question.date}
+      </p>
+
 
       <div className="answers">
         {props.question.answers.map((answer, index) => {

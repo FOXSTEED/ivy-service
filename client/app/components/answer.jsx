@@ -1,12 +1,13 @@
 import React from 'react';
+import styles from '../styling/app.css';
 
 const Answer = (props) => {
   return (
     <div className="answer">
-      <br></br>
-      <div>
-      <h4>-------- ANSWER </h4> <p>{props.answer.answerText}</p>
-      </div>
+
+      <p className={styles.responseFrom}>Response from {props.answer.firstName + ' ' + props.answer.lastName}</p>
+      <p className={styles.answer}>{props.answer.answerText}</p>
+
     </div>
   );
 };
