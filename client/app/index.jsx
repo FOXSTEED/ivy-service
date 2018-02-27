@@ -5,8 +5,6 @@ import Question from './components/question.jsx';
 import Header from './components/header.jsx';
 import styles from './styling/app.css';
 
-console.log(styles); 
-
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props);
@@ -18,12 +16,9 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   componentWillMount() {
-    //console.log(window.location.href, typeof window.location.href );
-    // http://localhost:3004/attractions/0
     fetch('http://localhost:3004/attractions/199')
       .then(res => res.json())
       .then((result) => {
-        //console.log(result);
         this.setState({ 
           realData: result,
           loading: false,
@@ -34,7 +29,7 @@ class QuestionsAndAnswers extends React.Component {
   render() {
     if (this.state.loading) {
       return (
-        <p>This thang is looooaaadddiinnnggguuuuhhh hold your horses!!!</p>
+        <p>Page is loading</p>
       );
     }
 
