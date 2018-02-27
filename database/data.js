@@ -31,3 +31,4 @@ function getById(id, callback) {
 exports.addToDb = addToDb;
 exports.getAll = getAll;
 exports.getById = getById;
+exports.QuestionModel = QuestionModel;

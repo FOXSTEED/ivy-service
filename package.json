@@ -10,8 +10,12 @@
   "scripts": {
     "dev": "webpack -d --watch",
     "build": "webpack -p",
-    "start": "nodemon server/server.js"
+    "start": "nodemon server/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
+
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
