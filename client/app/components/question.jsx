@@ -1,11 +1,16 @@
 import React from 'react';
 import Answer from './answer.jsx';
+import Avatar from './avatar.jsx';
 
 
 const Question = (props) => {
   console.log('question')
   return (
     <div className="question">
+
+      <Avatar
+        avatar={props.question.avatar}
+      />
 
       <br></br>
       QUESTION: 
@@ -23,8 +28,10 @@ const Question = (props) => {
           );
         })}
       </div>
+
     </div>
   );
 };
 
 export default Question;
+

@@ -14,13 +14,17 @@ class QuestionsAndAnswers extends React.Component {
   render() {
     console.log(this.state.temporaryData);
     return (
-      <div className="questionsAndAnswers">
-        {this.state.temporaryData.questions.map( (question, index) => (
-          <Question
-            question={question}
-            key={question.questionText}
-          />
-        ))}
+      <div className="main">
+
+        <div className="questionsAndAnswers">
+          {this.state.temporaryData.questions.map( (question, index) => (
+            <Question
+              question={question}
+              key={question.questionText}
+            />
+          ))}
+        </div>
+        
       </div>
     );
   }
