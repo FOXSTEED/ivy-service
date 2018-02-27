@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styling/app.css';
 
 const Header = () => (
-  <div className="header">
+  <div className={styles.header}>
   
     <h1 className={styles.title}>Questions & Answers</h1>
 

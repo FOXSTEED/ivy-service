@@ -1,13 +1,15 @@
 .main {
-    background-color: #FFFFFF;
+    background-color: tomato;
+    padding: 10px;
 }
 
 .header {
-
+    background-color: purple;
 }
 
-.questionsAndAnswers {
-
+.questionsAndAnswersContainer {
+    background-color: grey;
+    padding: 10px;
 }
 
 .title {
@@ -20,22 +22,30 @@
     font-size: 14px;
     kerning: normal;
     color: white;
-    background-color: rgb(24, 165, 128);
+    background-color: #00a680;;
     padding: 10px;
     border-radius: 2px;
-    border: none;
+    border-color:#00a680 #267060 #267060 #00a680;
+    text-align: center;
+    border-width: 1px;
 }
 
 .showAnswersButton {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     kerning: normal;
-    color: rgb(24, 165, 128);
-    background-color: #FFFFFF;
+    border-color: #e5e5e5 #767676 #767676 #e5e5e5;
+    background-color: #fff;
+    color: #00a680;
     padding: 10px;
     border-radius: 2px;
     border-width: 1px;
-    border-color: lightgrey;
+}
+
+.questionContainer {
+    background-color: yellow;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 .question {
@@ -45,6 +55,15 @@
 .responseFrom {
     font-family: Arial, Tahoma, sans-serif;
     font-size: 13px;
+}
+
+.answersContainer {
+    background-color: palevioletred;
+    padding: 10px;
+}
+
+.answerContainer {
+    background-color: green;
 }
 
 .answer {
@@ -65,9 +84,14 @@
     font-size: 11px;
 }
 
+.avatarContainer {
+    background-color: blue;
+}
+
 .avatarImage {
     width: 90px;
     height: 90px;
     border-radius: 100px;
 }
+
 

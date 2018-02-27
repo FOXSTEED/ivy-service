@@ -5,7 +5,7 @@ import styles from '../styling/app.css';
 
 const Question = (props) => {
   return (
-    <div className="question">
+    <div className={styles.questionContainer}>
 
       <Avatar
         avatar={props.question.avatar}
@@ -33,7 +33,7 @@ const Question = (props) => {
         Show all X answers
       </button>
 
-      <div className="answers">
+      <div className={styles.answersContainer}>
         {props.question.answers.map((answer, index) => {
           return (
             <Answer 
