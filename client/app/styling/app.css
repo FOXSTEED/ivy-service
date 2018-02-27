@@ -1,0 +1,26 @@
+.main {
+    background-color: #FFFFFF;
+}
+
+.title {
+    font-family: Arial, Tahoma, sans-serif;
+}
+
+.button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    kerning: normal;
+    color: white;
+    background-color: rgb(24, 165, 128);
+    padding: 10px;
+    border-radius: 2px;
+    border: none;
+}
+
+.question {
+    font-family: Arial, Tahoma, sans-serif;
+}
+
+.avatar {
+    
+}

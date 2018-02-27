@@ -1,7 +1,7 @@
 import React from 'react';
 import Answer from './answer.jsx';
 import Avatar from './avatar.jsx';
-
+import styles from '../styling/app.css';
 
 const Question = (props) => {
   return (
@@ -16,7 +16,7 @@ const Question = (props) => {
       <br></br>
       <h4>QUESTION:</h4>
       <br></br>
-      <p>{props.question.questionText}</p>
+      <p className={styles.question}>{props.question.questionText}</p>
       <br></br>
 
       <div className="answers">

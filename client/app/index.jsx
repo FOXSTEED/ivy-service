@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import attractionsData from '../../fakeData';
 import Question from './components/question.jsx';
+import styles from './styling/app.css';
+
+console.log(styles); 
 
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
@@ -36,7 +39,15 @@ class QuestionsAndAnswers extends React.Component {
     }
 
     return (
-      <div className="main">
+      <div className={styles.main}>
+        
+        <h1 className={styles.title}>Questions & Answers</h1>
+
+        <button className={styles.button}>
+          Ask a question
+        </button>
+
+        <br></br>
 
         <div className="questionsAndAnswers">
           {this.state.realData.questions.map((question, index) => (
