@@ -9,7 +9,7 @@ db.once('open', () => console.log('something from mongoose'));
 const questionSchema = mongoose.Schema({
   id: {
     type: Number,
-    unique: true, 
+    unique: true,
   },
   questions: [],
 });
