@@ -6,14 +6,14 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggle: false,
+      formIsDisplayed: false,
     };
   }
 
   displaySubmissionForm() {
     const boolean = this.state.toggle;
     this.setState({
-      toggle: !boolean,
+      formIsDisplayed: !boolean,
     });
   }
 
@@ -31,7 +31,7 @@ class Header extends React.Component {
           </button>
         </div>
 
-        {this.state.toggle ? <QuestionSubmissionForm /> : null}
+        {this.state.formIsDisplayed ? <QuestionSubmissionForm /> : null}
 
       </div>
     );
