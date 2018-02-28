@@ -35,4 +35,6 @@ function removeAll(callback) {
 exports.addToDb = addToDb;
 exports.getAll = getAll;
 exports.getById = getById;
+exports.removeAll = removeAll;
 exports.QuestionModel = QuestionModel;
+

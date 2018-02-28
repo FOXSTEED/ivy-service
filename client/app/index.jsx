@@ -11,12 +11,12 @@ class QuestionsAndAnswers extends React.Component {
     this.state = {
       temporaryData: attractionsData[0],
       realData: {},
-      loading: true
+      loading: true,
     };
   }
 
   componentWillMount() {
-    fetch('http://localhost:3004/attractions/7')
+    fetch('http://localhost:3004/attractions/12')
       .then(res => res.json())
       .then((result) => {
         this.setState({ 

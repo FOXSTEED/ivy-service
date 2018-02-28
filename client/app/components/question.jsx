@@ -4,6 +4,18 @@ import Avatar from './avatar.jsx';
 import styles from '../styling/app.css';
 
 const Question = (props) => {
+
+  let showAnswersButton = null;
+  if (props.question.answers.length) {
+    if (props.question.answers.length === 1) {
+      showAnswersButton = <button className={styles.secondaryButton}> Show answer </button>;
+    } else if (props.question.answers.length === 2) {
+      showAnswersButton = <button className={styles.secondaryButton}> Show answers </button>;
+    } else {
+      showAnswersButton = <button className={styles.secondaryButton}> Show all {props.question.answers.length} answers </button>;
+    }
+  }
+
   return (
     <div className={styles.questionContainer}>
 
@@ -18,8 +30,9 @@ const Question = (props) => {
 
         <p className={styles.question}> {props.question.questionText} </p>
         <p className={styles.date}> {props.question.date}</p>
+
         <button className={styles.button}> Answer </button>
-        <button className={styles.secondaryButton}>  Show all {props.question.answers.length} answers  </button>
+        {showAnswersButton}
 
         <Answers 
           answers={props.question.answers}
@@ -32,4 +45,3 @@ const Question = (props) => {
 };
 
 export default Question;
-

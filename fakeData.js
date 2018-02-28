@@ -7,7 +7,7 @@ function getRandomNumBetween(min, max) {
 function generateAnswers() {
   const answers = [];
 
-  for (let i = 0; i < getRandomNumBetween(1, 10); i += 1) {
+  for (let i = 0; i <= getRandomNumBetween(1, 10); i += 1) {
     const answer = {};
 
     answer.answerNumber = i;
@@ -27,7 +27,7 @@ function generateAnswers() {
 function generateQuestions() {
   const questions = [];
 
-  for (let i = 0; i < getRandomNumBetween(1, 30); i += 1) {
+  for (let i = 0; i <= getRandomNumBetween(1, 30); i += 1) {
     const question = {};
 
     question.questionNumber = i;

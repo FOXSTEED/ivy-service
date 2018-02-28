@@ -13,6 +13,12 @@ const database = require('./data.js');
   });
 }(fakeData));
 
+// database.removeAll((err, data) => {
+//   if (err){
+//     console.log('error removing');
+//   }
+// });
+
 // database.getAll((err, data) => {
 //   if (err) {
 //     console.log('error from seedDB');
