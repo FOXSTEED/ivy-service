@@ -12,6 +12,9 @@ class Question extends React.Component {
       answersDisplayed: false,
       answerFormDisplayed: false,
     };
+
+    this.displayAllAnswers = this.displayAllAnswers.bind(this);
+    this.displayAnswerForm = this.displayAnswerForm.bind(this);
   }
 
   displayAllAnswers() {
@@ -48,14 +51,14 @@ class Question extends React.Component {
           </button>
 
           <ShowAnswersButton 
-            displayAllAnswers={this.displayAllAnswers.bind(this)} 
+            displayAllAnswers={this.displayAllAnswers} 
             answers={this.props.question.answers}
             answersDisplayed={this.state.answersDisplayed}
           />
 
           {this.state.answerFormDisplayed ?
             <AnswerSubmissionForm 
-              displayAnswerForm={this.displayAnswerForm.bind(this)}
+              displayAnswerForm={this.displayAnswerForm}
               answerFormDisplayed={this.state.answerFormDisplayed}
             /> : null}
 

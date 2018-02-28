@@ -6,9 +6,9 @@ const Answer = (props) => {
     <div className={styles.answerContainer}>
 
       <p className={styles.responseFrom}>
-        Response from {props.firstName + ' ' + props.lastName + ' | ' + (props.flag === true ? '⚑' : '⚐')}
+        Response from {`${props.firstName} ${props.lastName} | ${props.flag === true ? '⚑' : '⚐'}`}
       </p>
-      
+
       <p className={styles.answer}>{props.answerText}</p>
     </div>
   );

@@ -6,8 +6,8 @@ const AnswerSubmissionForm = (props) => {
     <div>
       <p className={styles.answerSubmissionHeader}> WHAT IS YOUR ANSWER?</p>
       <form>
-          <textarea className={styles.textEntry} placeholder="Can you answer this question? Enter your answer here">
-          </textarea>
+        <textarea className={styles.textEntry} placeholder="Can you answer this question? Enter your answer here">
+        </textarea>
       </form>
 
       <button className={styles.button}> Submit </button>

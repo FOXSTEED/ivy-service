@@ -8,6 +8,8 @@ class Header extends React.Component {
     this.state = {
       formIsDisplayed: false,
     };
+
+    this.displaySubmissionForm = this.displaySubmissionForm.bind(this);
   }
 
   displaySubmissionForm() {
@@ -26,12 +28,15 @@ class Header extends React.Component {
         </div>
 
         <div className={styles.askButton}>
-          <button className={styles.headerButton} onClick={this.displaySubmissionForm.bind(this)}>
+          <button className={styles.headerButton} onClick={this.displaySubmissionForm}>
             Ask a question
           </button>
         </div>
 
-        {this.state.formIsDisplayed ? <QuestionSubmissionForm displaySubmissionForm={this.displaySubmissionForm.bind(this)}/> : null}
+        {this.state.formIsDisplayed ?
+          <QuestionSubmissionForm
+            displaySubmissionForm={this.displaySubmissionForm}
+          /> : null}
 
       </div>
     );

@@ -9,7 +9,6 @@ class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      temporaryData: attractionsData[0],
       realData: {},
       loading: true,
     };

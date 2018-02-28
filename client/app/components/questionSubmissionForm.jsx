@@ -11,7 +11,7 @@ const QuestionSubmissionForm = (props) => {
       </form>
 
       <button className={styles.button}> Submit </button>
-      <button className={styles.secondaryButton} onClick={ () => props.displaySubmissionForm()}> Cancel </button>
+      <button className={styles.secondaryButton} onClick={() => props.displaySubmissionForm()}> Cancel </button>
     </div>
   );
 };
