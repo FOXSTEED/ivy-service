@@ -14,34 +14,37 @@ const Question = (props) => {
       />
 
 
-      <p className={styles.question}>
-        {props.question.questionText}
-      </p>
+      <div className={styles.questionAndAnswerContainer}>
+        <p className={styles.question}>
+          {props.question.questionText}
+        </p>
 
-      <p className={styles.date}>
-        {props.question.date}
-      </p>
+        <p className={styles.date}>
+          {props.question.date}
+        </p>
 
-      <button className={styles.button}>
-        Answer
-      </button>
+        <button className={styles.button}>
+          Answer
+        </button>
 
-      <br>
-      </br>
+        <br>
+        </br>
 
-      <button className={styles.showAnswersButton}>
-        Show all X answers
-      </button>
+        <button className={styles.showAnswersButton}>
+          Show all X answers
+        </button>
 
-      <div className={styles.answersContainer}>
-        {props.question.answers.map((answer, index) => {
-          return (
-            <Answer 
-              answer={answer}
-              key={index}
-            />
-          );
-        })}
+        <div className={styles.answersContainer}>
+          {props.question.answers.map((answer, index) => {
+            return (
+              <Answer 
+                answer={answer}
+                key={index}
+              />
+            );
+          })}
+        </div>
+
       </div>
 
     </div>

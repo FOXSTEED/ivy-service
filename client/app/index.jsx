@@ -16,7 +16,7 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   componentWillMount() {
-    fetch('http://localhost:3004/attractions/15')
+    fetch('http://localhost:3004/attractions/91')
       .then(res => res.json())
       .then((result) => {
         this.setState({ 
@@ -40,7 +40,7 @@ class QuestionsAndAnswers extends React.Component {
 
         <br></br>
 
-        <div className={styles.questionsAndAnswersContainer}>
+        <div className={styles.allQuestionsAndAnswersContainer}>
           {this.state.realData.questions.map((question, index) => (
             <Question
               question={question}

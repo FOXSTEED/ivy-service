@@ -1,14 +1,19 @@
 .main {
-    background-color: tomato;
+    /* background-color: tomato; */
     padding: 10px;
 }
 
 .header {
-    background-color: purple;
+    /* background-color: purple; */
 }
 
-.questionsAndAnswersContainer {
-    background-color: grey;
+.allQuestionsAndAnswersContainer {
+    /* background-color: grey; */
+    padding: 10px;
+}
+
+.questionAndAnswerContainer {
+    /* background-color: tan; */
     padding: 10px;
 }
 
@@ -43,9 +48,13 @@
 }
 
 .questionContainer {
-    background-color: yellow;
+    display: flex;
+    /* background-color: yellow; */
     padding: 10px;
     margin-bottom: 10px;
+    border-top-style: solid;
+    border-color: lightgrey;
+    border-width: 1px; 
 }
 
 .question {
@@ -58,12 +67,12 @@
 }
 
 .answersContainer {
-    background-color: palevioletred;
+    /* background-color: palevioletred; */
     padding: 10px;
 }
 
 .answerContainer {
-    background-color: green;
+    /* background-color: green; */
 }
 
 .answer {
@@ -85,10 +94,11 @@
 }
 
 .avatarContainer {
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 .avatarImage {
+    margin-top: 28px;
     width: 90px;
     height: 90px;
     border-radius: 100px;
