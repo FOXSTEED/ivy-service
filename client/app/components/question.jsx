@@ -27,9 +27,6 @@ const Question = (props) => {
           Answer
         </button>
 
-        <br>
-        </br>
-
         <button className={styles.showAnswersButton}>
           Show all X answers
         </button>

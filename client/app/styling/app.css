@@ -1,20 +1,20 @@
 .main {
-    /* background-color: tomato; */
     padding: 10px;
 }
 
 .header {
-    /* background-color: purple; */
 }
 
 .allQuestionsAndAnswersContainer {
     /* background-color: grey; */
-    padding: 10px;
 }
 
 .questionAndAnswerContainer {
     /* background-color: tan; */
-    padding: 10px;
+}
+
+.titleContainer {
+    display: inline-block;
 }
 
 .title {
@@ -27,7 +27,7 @@
     font-size: 14px;
     kerning: normal;
     color: white;
-    background-color: #00a680;;
+    background-color: #00a680;
     padding: 10px;
     border-radius: 2px;
     border-color:#00a680 #267060 #267060 #00a680;
@@ -35,7 +35,18 @@
     border-width: 1px;
 }
 
+.button:hover {
+    background-color: rgb(30, 191, 149);
+}
+
+.askButton {
+    display: inline-block;
+    float: right;
+    margin-top: 18px;
+}
+
 .showAnswersButton {
+    display: inline;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     kerning: normal;
@@ -45,16 +56,16 @@
     padding: 10px;
     border-radius: 2px;
     border-width: 1px;
+    margin-left: 10px;
 }
 
 .questionContainer {
     display: flex;
-    /* background-color: yellow; */
-    padding: 10px;
     margin-bottom: 10px;
     border-top-style: solid;
     border-color: lightgrey;
     border-width: 1px; 
+    /* background-color: yellow; */
 }
 
 .question {
@@ -68,10 +79,13 @@
 
 .answersContainer {
     /* background-color: palevioletred; */
-    padding: 10px;
 }
 
 .answerContainer {
+    border-left-style: solid;
+    border-color: lightgrey;
+    border-width: 1px; 
+    padding-left: 28px;
     /* background-color: green; */
 }
 
@@ -95,6 +109,7 @@
 
 .avatarContainer {
     /* background-color: blue; */
+    margin-right: 20px;
 }
 
 .avatarImage {
