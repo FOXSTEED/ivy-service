@@ -20,7 +20,7 @@ const Question = (props) => {
         <p className={styles.question}> {props.question.questionText} </p>
         <p className={styles.date}> {props.question.date}</p>
         <button className={styles.button}> Answer </button>
-        <button className={styles.showAnswersButton}>  Show all X answers  </button>
+        <button className={styles.showAnswersButton}>  Show all {props.question.answers.length} answers  </button>
 
         <Answers 
           answers={props.question.answers}
