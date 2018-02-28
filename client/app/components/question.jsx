@@ -4,7 +4,6 @@ import Avatar from './avatar.jsx';
 import styles from '../styling/app.css';
 
 const Question = (props) => {
-  console.log(props)
   return (
     <div className={styles.questionContainer}>
 
