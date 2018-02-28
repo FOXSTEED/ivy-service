@@ -22,13 +22,32 @@
     font-size: 28px;
 }
 
-.button {
+.headerButton {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     kerning: normal;
     color: white;
     background-color: #00a680;
-    padding: 10px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 2px;
+    border-color:#00a680 #267060 #267060 #00a680;
+    text-align: center;
+    border-width: 1px;
+}
+
+.button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    kerning: normal;
+    color: white;
+    background-color: #00a680;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     border-radius: 2px;
     border-color:#00a680 #267060 #267060 #00a680;
     text-align: center;
@@ -48,12 +67,15 @@
 .secondaryButton {
     display: inline;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     kerning: normal;
     border-color: #e5e5e5 #767676 #767676 #e5e5e5;
     background-color: #fff;
     color: #00a680;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     border-radius: 2px;
     border-width: 1px;
     margin-left: 10px;
@@ -79,6 +101,7 @@
 .responseFrom {
     font-family: Arial, Tahoma, sans-serif;
     font-size: 13px;
+    color: #2c2c2c;
 }
 
 .answersContainer {
@@ -113,11 +136,11 @@
 
 .avatarContainer {
     /* background-color: blue; */
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
 .avatarImage {
-    margin-top: 28px;
+    margin-top: 24px;
     width: 90px;
     height: 90px;
     border-radius: 100px;
@@ -147,4 +170,11 @@
     font-family: Arial, Tahoma, sans-serif;
     font-size: 20px;
     color: #000a12;
+}
+
+.answerSubmissionHeader {
+    font-family: Arial, Tahoma, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #767676;
 }

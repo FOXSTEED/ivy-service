@@ -26,7 +26,7 @@ class Header extends React.Component {
         </div>
 
         <div className={styles.askButton}>
-          <button className={styles.button} onClick={this.displaySubmissionForm.bind(this)}>
+          <button className={styles.headerButton} onClick={this.displaySubmissionForm.bind(this)}>
             Ask a question
           </button>
         </div>

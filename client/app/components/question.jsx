@@ -1,22 +1,30 @@
 import React from 'react';
-import Answer from './answer.jsx';
 import Answers from './answers.jsx';
 import Avatar from './avatar.jsx';
 import ShowAnswersButton from './showAnswersButton.jsx';
+import AnswerSubmissionForm from './answerSubmissionForm.jsx';
 import styles from '../styling/app.css';
 
 class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answersDisplayed: false
-    }
+      answersDisplayed: false,
+      answerFormDisplayed: false,
+    };
   }
 
   displayAllAnswers() {
     const boolean = this.state.answersDisplayed;
     this.setState({
       answersDisplayed: !boolean,
+    });
+  }
+
+  displayAnswerForm() {
+    const boolean = this.state.answerFormDisplayed;
+    this.setState({
+      answerFormDisplayed: !boolean,
     });
   }
 
@@ -30,27 +38,39 @@ class Question extends React.Component {
           lastName={this.props.question.lastName}
         />
 
-
         <div className={styles.questionAndAnswerContainer}>
 
           <p className={styles.question}> {this.props.question.questionText} </p>
-          <p className={styles.date}> {this.props.question.date}</p>
+          <p className={styles.date}> {this.props.question.date} </p>
 
-          <button className={styles.button}> Answer </button>
+          <button onClick={() => this.displayAnswerForm()} className={styles.button} >
+            Answer
+          </button>
+
           <ShowAnswersButton 
             displayAllAnswers={this.displayAllAnswers.bind(this)} 
             answers={this.props.question.answers}
             answersDisplayed={this.state.answersDisplayed}
           />
-          
-          <Answers answers={this.props.question.answers.slice(0,1)}/>
-          {this.state.answersDisplayed ? <Answers answers={this.props.question.answers.slice(1)}/> : null}
+
+          {this.state.answerFormDisplayed ?
+            <AnswerSubmissionForm 
+              displayAnswerForm={this.displayAnswerForm.bind(this)}
+              answerFormDisplayed={this.state.answerFormDisplayed}
+            /> : null}
+
+          <Answers answers={this.props.question.answers.slice(0, 1)} />
+
+          {this.state.answersDisplayed ?
+            <Answers
+              answers={this.props.question.answers.slice(1)}
+            /> : null}
 
         </div>
 
       </div>
     );
   }
-};
+}
 
 export default Question;
