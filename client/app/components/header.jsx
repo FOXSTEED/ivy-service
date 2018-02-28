@@ -11,7 +11,7 @@ class Header extends React.Component {
   }
 
   displaySubmissionForm() {
-    const boolean = this.state.toggle;
+    const boolean = this.state.formIsDisplayed;
     this.setState({
       formIsDisplayed: !boolean,
     });
