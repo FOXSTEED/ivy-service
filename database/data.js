@@ -9,7 +9,7 @@ db.once('open', () => console.log('something from mongoose'));
 const questionSchema = mongoose.Schema({
   id: {
     type: Number,
-    unique: true, 
+    unique: true,
   },
   questions: [],
 });
@@ -26,6 +26,10 @@ function getAll(callback) {
 
 function getById(id, callback) {
   QuestionModel.findOne({ id: id }, callback);
+}
+
+function removeAll(callback) {
+  QuestionModel.remove({}, callback);
 }
 
 exports.addToDb = addToDb;
