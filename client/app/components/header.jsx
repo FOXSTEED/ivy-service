@@ -31,7 +31,7 @@ class Header extends React.Component {
           </button>
         </div>
 
-        {this.state.formIsDisplayed ? <QuestionSubmissionForm /> : null}
+        {this.state.formIsDisplayed ? <QuestionSubmissionForm displaySubmissionForm={this.displaySubmissionForm.bind(this)}/> : null}
 
       </div>
     );
