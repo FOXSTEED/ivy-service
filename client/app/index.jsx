@@ -16,7 +16,7 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   componentWillMount() {
-    fetch('http://localhost:3004/attractions/12')
+    fetch('http://localhost:3004/attractions/2')
       .then(res => res.json())
       .then((result) => {
         this.setState({ 
