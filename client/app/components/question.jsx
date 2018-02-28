@@ -1,9 +1,10 @@
 import React from 'react';
-import Answer from './answer.jsx';
+import Answers from './answers.jsx';
 import Avatar from './avatar.jsx';
 import styles from '../styling/app.css';
 
 const Question = (props) => {
+  console.log(props)
   return (
     <div className={styles.questionContainer}>
 
@@ -15,32 +16,15 @@ const Question = (props) => {
 
 
       <div className={styles.questionAndAnswerContainer}>
-        <p className={styles.question}>
-          {props.question.questionText}
-        </p>
 
-        <p className={styles.date}>
-          {props.question.date}
-        </p>
+        <p className={styles.question}> {props.question.questionText} </p>
+        <p className={styles.date}> {props.question.date}</p>
+        <button className={styles.button}> Answer </button>
+        <button className={styles.showAnswersButton}>  Show all X answers  </button>
 
-        <button className={styles.button}>
-          Answer
-        </button>
-
-        <button className={styles.showAnswersButton}>
-          Show all X answers
-        </button>
-
-        <div className={styles.answersContainer}>
-          {props.question.answers.map((answer, index) => {
-            return (
-              <Answer 
-                answer={answer}
-                key={index}
-              />
-            );
-          })}
-        </div>
+        <Answers 
+          answers={props.question.answers}
+        />
 
       </div>
 

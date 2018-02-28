@@ -7,6 +7,7 @@ const Header = () => (
     <div className={styles.titleContainer}>
       <h1 className={styles.title}>Questions & Answers</h1>
     </div>
+    
     <div className={styles.askButton}>
       <button className={styles.button}>
         Ask a question

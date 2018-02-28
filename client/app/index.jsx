@@ -36,7 +36,7 @@ class QuestionsAndAnswers extends React.Component {
     return (
       <div className={styles.main}>
 
-        <Header/>
+        <Header />
 
         <br></br>
 
