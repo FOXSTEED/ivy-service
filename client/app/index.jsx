@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import attractionsData from '../../fakeData';
 import Question from './components/question.jsx';
 import Header from './components/header.jsx';
 import styles from './styling/app.css';
@@ -9,14 +8,13 @@ class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      temporaryData: attractionsData[0],
       realData: {},
       loading: true,
     };
   }
 
   componentWillMount() {
-    fetch('http://localhost:3004/attractions/12')
+    fetch('http://localhost:3004/attractions/2')
       .then(res => res.json())
       .then((result) => {
         this.setState({ 

@@ -1,47 +1,79 @@
 import React from 'react';
 import Answers from './answers.jsx';
 import Avatar from './avatar.jsx';
+import ShowAnswersButton from './showAnswersButton.jsx';
+import AnswerSubmissionForm from './answerSubmissionForm.jsx';
 import styles from '../styling/app.css';
 
-const Question = (props) => {
+class Question extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      answersDisplayed: false,
+      answerFormDisplayed: false,
+    };
 
-  let showAnswersButton = null;
-  if (props.question.answers.length) {
-    if (props.question.answers.length === 1) {
-      showAnswersButton = <button className={styles.secondaryButton}> Show answer </button>;
-    } else if (props.question.answers.length === 2) {
-      showAnswersButton = <button className={styles.secondaryButton}> Show answers </button>;
-    } else {
-      showAnswersButton = <button className={styles.secondaryButton}> Show all {props.question.answers.length} answers </button>;
-    }
+    this.displayAllAnswers = this.displayAllAnswers.bind(this);
+    this.displayAnswerForm = this.displayAnswerForm.bind(this);
   }
 
-  return (
-    <div className={styles.questionContainer}>
+  displayAllAnswers() {
+    const boolean = this.state.answersDisplayed;
+    this.setState({
+      answersDisplayed: !boolean,
+    });
+  }
 
-      <Avatar
-        avatar={props.question.avatar}
-        firstName={props.question.firstName}
-        lastName={props.question.lastName}
-      />
+  displayAnswerForm() {
+    const boolean = this.state.answerFormDisplayed;
+    this.setState({
+      answerFormDisplayed: !boolean,
+    });
+  }
 
+  render() {
+    return (
+      <div className={styles.questionContainer}>
 
-      <div className={styles.questionAndAnswerContainer}>
-
-        <p className={styles.question}> {props.question.questionText} </p>
-        <p className={styles.date}> {props.question.date}</p>
-
-        <button className={styles.button}> Answer </button>
-        {showAnswersButton}
-
-        <Answers 
-          answers={props.question.answers}
+        <Avatar
+          avatar={this.props.question.avatar}
+          firstName={this.props.question.firstName}
+          lastName={this.props.question.lastName}
         />
 
-      </div>
+        <div className={styles.questionAndAnswerContainer}>
 
-    </div>
-  );
-};
+          <p className={styles.question}> {this.props.question.questionText} </p>
+          <p className={styles.date}> {this.props.question.date} </p>
+
+          <button onClick={() => this.displayAnswerForm()} className={styles.button} >
+            Answer
+          </button>
+
+          <ShowAnswersButton 
+            displayAllAnswers={this.displayAllAnswers} 
+            answers={this.props.question.answers}
+            answersDisplayed={this.state.answersDisplayed}
+          />
+
+          {this.state.answerFormDisplayed ?
+            <AnswerSubmissionForm 
+              displayAnswerForm={this.displayAnswerForm}
+              answerFormDisplayed={this.state.answerFormDisplayed}
+            /> : null}
+
+          <Answers answers={this.props.question.answers.slice(0, 1)} />
+
+          {this.state.answersDisplayed ?
+            <Answers
+              answers={this.props.question.answers.slice(1)}
+            /> : null}
+
+        </div>
+
+      </div>
+    );
+  }
+}
 
 export default Question;
