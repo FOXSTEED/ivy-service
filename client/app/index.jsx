@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import attractionsData from '../../fakeData';
 import Question from './components/question.jsx';
 import Header from './components/header.jsx';
 import styles from './styling/app.css';
