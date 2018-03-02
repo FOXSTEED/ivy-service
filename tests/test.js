@@ -1,7 +1,18 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+import QuestionsAndAnswers from '../client/app/components/questionsAndAnswers.jsx';
+import 'isomorphic-fetch'; // / ?????? WTF
 const database = require('../database/data');
 
-describe('Entries in database', () => {
+describe('React', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<QuestionsAndAnswers />, div);
+  });
+});
 
+describe('Entries in database', () => {
   test('Should have 200 items corresponding to agreed upon number of attractions', (done) => {
     function callback(err, num) {
       if (err) {

@@ -58,6 +58,7 @@
     background-color: rgb(30, 191, 149);
 }
 
+
 .askButton {
     display: inline-block;
     float: right;
@@ -178,3 +179,5 @@
     font-weight: 500;
     color: #767676;
 }
+
+*:focus {outline:none !important}
