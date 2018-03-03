@@ -13,7 +13,7 @@ class QuestionsAndAnswers extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch('http://localhost:3004/attractions/2')
       .then(res => res.json())
       .then((result) => {

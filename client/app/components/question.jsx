@@ -44,7 +44,7 @@ class Question extends React.Component {
         <div className={styles.questionAndAnswerContainer}>
 
           <p className={styles.question}> {this.props.question.questionText} </p>
-          <p className={styles.date}> {this.props.question.date} </p>
+          <p className={styles.date}> {this.props.question.date.toString()} </p>
 
           <button onClick={() => this.displayAnswerForm()} className={styles.button} >
             Answer
