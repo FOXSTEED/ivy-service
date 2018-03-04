@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import QuestionsAndAnswers from './components/questionsAndAnswers.jsx';
 
 ReactDOM.render(
-  <QuestionsAndAnswers pathname={window.location.pathname}/>,
+  <QuestionsAndAnswers />,
   document.getElementById('questions-and-answers'),
 );
 

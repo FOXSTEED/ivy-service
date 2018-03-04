@@ -10,7 +10,7 @@ class QuestionsAndAnswers extends React.Component {
     this.state = {
       realData: {},
       loading: true,
-      pathname: this.props.pathname,
+      pathname: window.location.pathname,
     };
   }
 

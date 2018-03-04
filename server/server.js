@@ -14,7 +14,7 @@ app.use(cors());
 app.get('/attractions', (req, res) => {
   database.getAll((err, data) => {
     if (err) {
-      console.log('error from get request /attractions')
+      console.log('error from get request /attractions');
       res.status(404).json({ message: 'No attractions' });
     }
     res.json(data);
