@@ -29,9 +29,12 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "faker": "^4.1.0",
+    "moment": "^2.21.0",
+    "moment-timezone": "^0.5.14",
     "mongoose": "^5.0.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-moment": "^0.7.0",
     "webpack": "^3.11.0"
   },
   "devDependencies": {

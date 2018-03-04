@@ -3,7 +3,11 @@ import Answers from './answers.jsx';
 import Avatar from './avatar.jsx';
 import ShowAnswersButton from './showAnswersButton.jsx';
 import AnswerSubmissionForm from './answerSubmissionForm.jsx';
+import Moment from 'react-moment';
+import 'moment-timezone';
 import styles from '../styling/app.css';
+
+Moment.globalFormat = 'MMMM D YYYY';
 
 class Question extends React.Component {
   constructor(props) {
@@ -44,7 +48,7 @@ class Question extends React.Component {
         <div className={styles.questionAndAnswerContainer}>
 
           <p className={styles.question}> {this.props.question.questionText} </p>
-          <p className={styles.date}> {this.props.question.date.toString()} </p>
+          <p className={styles.date}> {<Moment>{this.props.question.date.toString()}</Moment>} </p>
 
           <button onClick={() => this.displayAnswerForm()} className={styles.button} >
             Answer
