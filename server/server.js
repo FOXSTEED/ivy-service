@@ -6,7 +6,7 @@ const database = require('../database/data.js');
 const app = express();
 const port = 3004;
 
-app.use('/attractions/:id', express.static('../client/public'));
+app.use('/listings/:id/q-and-a', express.static('../client/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -21,7 +21,7 @@ app.get('/attractions', (req, res) => {
   });
 });
 
-app.get('/api/attractions/:id', (req, res) => {
+app.get('/api/listings/:id/q-and-a', (req, res) => {
   const requestId = Number(req.params.id);
 
   database.getById(requestId, (err, data) => {
