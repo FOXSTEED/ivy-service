@@ -1,10 +1,10 @@
+import 'moment-timezone';
 import React from 'react';
 import Answers from './answers.jsx';
 import Avatar from './avatar.jsx';
 import ShowAnswersButton from './showAnswersButton.jsx';
 import AnswerSubmissionForm from './answerSubmissionForm.jsx';
 import Moment from 'react-moment';
-import 'moment-timezone';
 import styles from '../styling/app.css';
 
 Moment.globalFormat = 'MMMM D YYYY';

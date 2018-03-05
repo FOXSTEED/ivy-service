@@ -1,3 +1,4 @@
+import 'isomorphic-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount, shallow, render } from 'enzyme';
@@ -14,7 +15,6 @@ import Answers from '../client/app/components/answers.jsx';
 import Answer from '../client/app/components/answer.jsx';
 import attractionsData from '../fakeData.js';
 
-import 'isomorphic-fetch'; // / ?????? WTF
 
 configure({ adapter: new Adapter() });
 

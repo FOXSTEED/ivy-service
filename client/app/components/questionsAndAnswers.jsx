@@ -37,8 +37,6 @@ class QuestionsAndAnswers extends React.Component {
 
         <Header />
 
-        <br></br>
-
         <div className={styles.allQuestionsAndAnswersContainer}>
           {this.state.realData.questions.map((question, index) => (
             <Question

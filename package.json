@@ -29,6 +29,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "faker": "^4.1.0",
+    "isomorphic-fetch": "^2.2.1",
     "moment": "^2.21.0",
     "moment-timezone": "^0.5.14",
     "mongoose": "^5.0.7",
