@@ -11,6 +11,7 @@ module.exports = {
     "no-console": "off",
     "no-undef": "off",
     "react/prop-types": "off",
+    "const database = require('../database/data');": "off"
    // "indent": "off"
   }
 };
