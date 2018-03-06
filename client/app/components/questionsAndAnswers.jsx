@@ -11,7 +11,6 @@ class QuestionsAndAnswers extends React.Component {
       realData: {},
       loading: true,
       pathname: window.location.pathname,
-      ID : this.props.ID,
     };
   }
 

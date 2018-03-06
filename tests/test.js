@@ -72,7 +72,6 @@ describe('Tests client', () => {
   describe('Header Component', () => {
     it('should change formIsDisplayed in component state to true on button click', () => {
       const wrapper = shallow(<Header />);
-      console.log(wrapper.debug());
       const button = wrapper.find('button.headerButton');
       button.simulate('click');
       expect(wrapper.state().formIsDisplayed).toEqual(true);

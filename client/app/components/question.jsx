@@ -36,6 +36,8 @@ class Question extends React.Component {
   }
 
   render() {
+    const date = new Date(this.props.question.date.toString().slice(0, 10));
+  
     return (
       <div className={styles.questionContainer}>
 
@@ -48,7 +50,7 @@ class Question extends React.Component {
         <div className={styles.questionAndAnswerContainer}>
 
           <p className={styles.question}> {this.props.question.questionText} </p>
-          <p className={styles.date}> {<Moment>{this.props.question.date.toString()}</Moment>} </p>
+          <p className={styles.date}> {<Moment date={date}/>} </p>
 
           <button onClick={() => this.displayAnswerForm()} className={styles.button} >
             Answer
