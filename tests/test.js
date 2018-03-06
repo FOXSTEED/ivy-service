@@ -66,7 +66,38 @@ describe('Tests client', () => {
     it('renders Answers component after fetching data', () => {
       expect(wrapper.find(Answers).length).toBeGreaterThan(0);
     });
-    
+
+    it('renders Answer component after fetching data', () => {
+      expect(wrapper.find(Answer).length).toBeGreaterThan(0);
+    });
+
+    it('renders ShowAnswersButton component after fetching data', () => {
+      expect(wrapper.find(ShowAnswersButton).length).toBeGreaterThan(0);
+    });
+
+    it('renders QuestionSubmissionForm component after button click', () => {
+      const button = wrapper.find('button.headerButton');
+      button.simulate('click');
+      expect(wrapper.find(QuestionSubmissionForm).length).toBeGreaterThan(0);
+    });
+
+    it('does not render QuestionSubmissionForm component after second button click', () => {
+      const button = wrapper.find('button.headerButton');
+      button.simulate('click');
+      expect(wrapper.find(QuestionSubmissionForm).length).toBe(0);
+    });
+
+    it('renders AnswerSubmissionForm component after button click', () => {
+      const button = wrapper.find('button.button').at(0);
+      button.simulate('click');
+      expect(wrapper.find(AnswerSubmissionForm).length).toBeGreaterThan(0);
+    }
+
+    it('does not render AnswerSubmissionForm component after second button click', () => {
+      const button = wrapper.find('button.button').at(0);
+      button.simulate('click');
+      expect(wrapper.find(AnswerSubmissionForm).length).toBe(0);
+    });
   });
 
   
