@@ -91,7 +91,7 @@ describe('Tests client', () => {
       const button = wrapper.find('button.button').at(0);
       button.simulate('click');
       expect(wrapper.find(AnswerSubmissionForm).length).toBeGreaterThan(0);
-    }
+    });
 
     it('does not render AnswerSubmissionForm component after second button click', () => {
       const button = wrapper.find('button.button').at(0);
