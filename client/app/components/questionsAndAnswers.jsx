@@ -11,11 +11,13 @@ class QuestionsAndAnswers extends React.Component {
       realData: {},
       loading: true,
       pathname: window.location.pathname,
+      ID : this.props.ID,
     };
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3004/api${this.state.pathname}`)
+    const idFromPathname = this.state.pathname.split('/')[2];
+    fetch(`http://localhost:3004/api/listings/${this.props.ID || idFromPathname || 0}/q-and-a/`)
       .then(res => res.json())
       .then((result) => {
         this.setState({ 
@@ -52,3 +54,4 @@ class QuestionsAndAnswers extends React.Component {
 }
 
 export default QuestionsAndAnswers;
+window.QuestionsAndAnswers = QuestionsAndAnswers;

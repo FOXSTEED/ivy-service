@@ -7,6 +7,9 @@ const app = express();
 const port = 3004;
 
 app.use('/listings/:id/q-and-a', express.static(`${__dirname}/../client/public`));
+app.use('/listings/:id/', express.static(`${__dirname}/../client/public`));
+app.use(express.static(`${__dirname}/../client/public`));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
