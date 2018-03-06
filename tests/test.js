@@ -66,49 +66,43 @@ describe('Tests client', () => {
     it('renders Answers component after fetching data', () => {
       expect(wrapper.find(Answers).length).toBeGreaterThan(0);
     });
+    
   });
 
   
   describe('Header Component', () => {
+
+    const wrapper = shallow(<Header />);
+
+    it('should not show question submission form on initial page load', () => {
+      expect(wrapper.find('QuestionSubmissionForm').length).toEqual(0);
+    });
+
     it('should change formIsDisplayed in component state to true on button click', () => {
-      const wrapper = shallow(<Header />);
       const button = wrapper.find('button.headerButton');
       button.simulate('click');
       expect(wrapper.state().formIsDisplayed).toEqual(true);
     });
   
-    it('should not show question submission form on initial page load', () => {
-      const wrapper = shallow(<Header />);
-      expect(wrapper.find('QuestionSubmissionForm').length).toEqual(0);
-    });
-  
     it('should show question submission form once button is clicked', () => {
-      const wrapper = shallow(<Header />);
-      wrapper.setState({ formIsDisplayed: true });
       expect(wrapper.find('QuestionSubmissionForm').length).toEqual(1);
     });
   });
   
   describe('Question Component', () => {
+
+    const data = attractionsData[0].questions[0];
+    const wrapper = shallow(<Question question={data} />);
   
     it('renders 1 component', () => {
-      const wrapper = shallow(<Question question={attractionsData[0].questions[0]} />);
       expect(wrapper).toHaveLength(1);
     });
   
-    it('renders  props correctly', () => {
-      const wrapper = shallow(<Question name={'something'} question={attractionsData[0].questions[0]}/>);
-      expect(wrapper.instance().props.name).toBe('something');
-    });
-  
     it('should display one answer from data on initial page load', () => {
-      const data = attractionsData[0].questions[0];
-      const wrapper = shallow(<Question question={data} />);
       expect(wrapper.find('Answers').length).toEqual(1);
     });
   
     it('should change answerFormDisplayed in component state to true on button click', () => {
-      const wrapper = shallow(<Question question={attractionsData[0].questions[0]} />);
       const button = wrapper.find('button.button');
       button.simulate('click');
       expect(wrapper.state().answerFormDisplayed).toEqual(true);
