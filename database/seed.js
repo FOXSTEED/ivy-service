@@ -1,17 +1,18 @@
 const fakeData = require('../fakeData.js');
-const mongoose = require('mongoose');
 const database = require('./data.js');
 
-(function seedDb(attractions) {
-  attractions.forEach((attraction) => {
-    database.addToDb(attraction, (err, data) => {
-      if (err) {
-        console.log(err);
-      }
-      // console.log(data);
-    });
-  });
-}(fakeData));
+
+database.addToDb(fakeData);
+
+// function seedDb(attractions) {
+//   database.addToDb(attractions, (err, data) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     // console.log(data);
+//   });
+// }
+// seedDb(fakeData);
 
 // database.removeAll((err, data) => {
 //   if (err){
