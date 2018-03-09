@@ -16,13 +16,6 @@ const questionSchema = mongoose.Schema({
 
 const QuestionModel = mongoose.model('Question', questionSchema);
 
-function addToDb(questions, callback) {
-  const promise = QuestionModel.create(questions, callback);
-  promise.then(() => {
-    console.log('added to database');
-    process.exit();
-  });
-}
 
 function getAll(callback) {
   QuestionModel.find({}, callback);
@@ -34,6 +27,20 @@ function getById(id, callback) {
 
 function removeAll(callback) {
   QuestionModel.remove({}, callback);
+}
+
+function addToDb(questions, callback) {
+  removeAll((err) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log('dropped database');
+  })
+  const promise = QuestionModel.create(questions, callback);
+  promise.then(() => {
+    console.log('added to database');
+    process.exit();
+  });
 }
 
 exports.addToDb = addToDb;
