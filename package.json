@@ -16,11 +16,14 @@
   "scripts": {
     "dev": "webpack -d --watch",
     "build": "webpack -p",
-    "start": "nodemon server/server.js",
+    "serve": "node server/server.js",
+    "serve-dev": "nodemon server/server.js",
     "test": "jest --verbose --forceExit",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "seed-database": "node database/seed.js"
+    "seed-database": "node database/seed.js",
+    "start": "npm run-script seed-database && npm run-script build && npm run-script serve",
+    "start-dev": "npm run-script seed-database && npm run-script dev && npm run-script serve-dev"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
