@@ -1,5 +1,5 @@
 # What image do you want to start building on?
-FROM node:8.2.1
+FROM node:9.8.0
 
 # Make a folder in your image where your app's source code can live
 RUN mkdir /q-a-service
@@ -11,13 +11,13 @@ WORKDIR /q-a-service
 COPY . /q-a-service
 
 # Does your app have any dependencies that should be installed?
-RUN npm install
+RUN npm install 
 
 # What port will the container talk to the outside world with once created?
 EXPOSE 3004
 
 # How do you start your app?
-CMD ["npm", "start"]
+CMD npm run start-dev
 
 
 

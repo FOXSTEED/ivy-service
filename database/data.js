@@ -1,6 +1,8 @@
+// import { Mongoose } from 'mongoose';
+
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://database/27017');
+mongoose.connect('mongodb://localhost/tripadviser');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -29,18 +31,25 @@ function removeAll(callback) {
   QuestionModel.remove({}, callback);
 }
 
-function addToDb(questions, callback) {
-  removeAll((err) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log('dropped database');
-  })
-  const promise = QuestionModel.create(questions, callback);
-  promise.then(() => {
-    console.log('added to database');
-    process.exit();
-  });
+async function addToDb(questions, callback) {
+  // const data1 = new Date()
+  // const hour1 = data1.getHours()
+  // const minute1 = data1.getMinutes()
+  // const second1 = data1.getSeconds()
+  // console.log(hour1+':'+minute1+':'+second1)
+  const promise = await QuestionModel.create(questions, callback);
+  // console.log('added to database');
+  let data = new Date()
+  let hour = data.getHours()
+  let minute = data.getMinutes()
+  let second = data.getSeconds()
+  console.log(hour+':'+minute+':'+second)
+  // mongoose.disconnect();
+  // process.exit();
+}
+
+function stopDb(questions, callback) {
+  mongoose.disconnect()
 }
 
 exports.addToDb = addToDb;

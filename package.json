@@ -23,7 +23,7 @@
     "test:coverage": "jest --coverage",
     "seed-database": "node database/seed.js",
     "start": "npm run-script seed-database && npm run-script build && npm run-script serve",
-    "start-dev": "npm run-script seed-database && npm run-script dev && npm run-script serve-dev"
+    "start-dev": "npm run seed-database & npm run serve-dev & npm run dev"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -33,6 +33,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "faker": "^4.1.0",
+    "fs": "0.0.1-security",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.21.0",
     "moment-timezone": "^0.5.14",
@@ -58,6 +59,7 @@
     "eslint-plugin-react": "^7.7.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.2",
+    "nodemon": "^1.17.2",
     "react-test-renderer": "^16.2.0",
     "style-loader": "^0.20.2"
   }

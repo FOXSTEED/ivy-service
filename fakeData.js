@@ -1,5 +1,7 @@
 const faker = require('faker');
-
+const database = require('./database/data.js');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/tripadviser');
 function getRandomNumBetween(min, max) {
   return Math.floor(Math.random() * ((max - min) + min));
 }
@@ -46,20 +48,24 @@ function generateQuestions() {
   return questions;
 }
 
-function generateAttractions() {
-  const attractions = [];
+async function generateAttractions() {
+  let attractions = [];
 
-  for (let i = 0; i < 200; i += 1) {
+  for (let i = 0; i < 100000; i += 1) {
+    if (i !== 0 && i % 2000 === 0) {
+      await database.addToDb(attractions)
+      console.log('inserted '+ i/2000)
+      attractions = []
+    }
     const attraction = {};
-
     attraction.id = i;
     attraction.questions = generateQuestions();
-
     attractions.push(attraction);
   }
-
-  return attractions;
+  // database.stopDb()
+  // return attractions;
 }
+
 
 const attractionsData = generateAttractions();
 module.exports = attractionsData;
