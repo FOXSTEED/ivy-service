@@ -8,7 +8,7 @@ class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      realData: {},
+      realData: [],
       loading: true,
       pathname: window.location.pathname,
     };
@@ -39,7 +39,7 @@ class QuestionsAndAnswers extends React.Component {
         <Header />
 
         <div className={styles.allQuestionsAndAnswersContainer}>
-          {this.state.realData.questions.map((question, index) => (
+          {this.state.realData.map((question, index) => (
             <Question
               question={question}
               key={question.questionText}

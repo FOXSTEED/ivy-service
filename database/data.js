@@ -13,7 +13,15 @@ const questionSchema = mongoose.Schema({
     type: Number,
     unique: true,
   },
-  questions: [],
+  trip: Number,
+  username: String,
+  firstName: String,
+  lastName: String,
+  date: String,
+  flag: Boolean,
+  avatar: String,
+  questionText: String,
+  answers: Array,
 });
 
 const QuestionModel = mongoose.model('Question', questionSchema);
@@ -24,7 +32,7 @@ function getAll(callback) {
 }
 
 function getById(id, callback) {
-  QuestionModel.findOne({ id: id }, callback);
+  QuestionModel.find({ trip: id }, callback);
 }
 
 function removeAll(callback) {
@@ -32,29 +40,19 @@ function removeAll(callback) {
 }
 
 async function addToDb(questions, callback) {
-  // const data1 = new Date()
-  // const hour1 = data1.getHours()
-  // const minute1 = data1.getMinutes()
-  // const second1 = data1.getSeconds()
-  // console.log(hour1+':'+minute1+':'+second1)
-  const promise = await QuestionModel.create(questions, callback);
+  const promise = await QuestionModel.insertMany(questions, callback);
   // console.log('added to database');
   let data = new Date()
   let hour = data.getHours()
   let minute = data.getMinutes()
   let second = data.getSeconds()
   console.log(hour+':'+minute+':'+second)
-  // mongoose.disconnect();
   // process.exit();
 }
 
-function stopDb(questions, callback) {
-  mongoose.disconnect()
-}
 
 exports.addToDb = addToDb;
 exports.getAll = getAll;
 exports.getById = getById;
 exports.removeAll = removeAll;
 exports.QuestionModel = QuestionModel;
-

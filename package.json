@@ -22,8 +22,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "seed-database": "node database/seed.js",
-    "start": "npm run-script seed-database && npm run-script build && npm run-script serve",
-    "start-dev": "npm run seed-database & npm run serve-dev & npm run dev"
+    "start": "npm run-script build && npm run-script serve",
+    "start-dev": " npm run serve-dev & npm run dev"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -38,6 +38,8 @@
     "moment": "^2.21.0",
     "moment-timezone": "^0.5.14",
     "mongoose": "^5.0.7",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-seed": "^0.4.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-moment": "^0.7.0",

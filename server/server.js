@@ -26,7 +26,6 @@ app.use(cors());
 
 app.get('/api/listings/:id/q-and-a', (req, res) => {
   const requestId = Number(req.params.id);
-
   database.getById(requestId, (err, data) => {
     if (err) {
       res.status(404).json({ message: 'No attraction' });
