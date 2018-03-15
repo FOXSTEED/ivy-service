@@ -39,8 +39,11 @@ function removeAll(callback) {
   QuestionModel.remove({}, callback);
 }
 
-async function addToDb(questions, callback) {
+async function addToDb(questions) {
   const promise = await QuestionModel.insertMany(questions, callback);
+  promise.catch((err)=>{
+    console.log('Error! Can not seed data '+err)
+  })
   // console.log('added to database');
   let data = new Date()
   let hour = data.getHours()
