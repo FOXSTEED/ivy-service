@@ -1,6 +1,5 @@
 const faker = require('faker');
-// const fs = require('fs');
-const database = require('./database/data.js');
+const database = require('./data.js');
 const mongoose = require('mongoose');
 
 // mongoose.connect('mongodb://localhost/tripadviser');
@@ -28,8 +27,6 @@ function generateAnswers() {
 
   return answers;
 }
-
-
 
 async function generateAttractions() {
   let questions = [];

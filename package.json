@@ -40,6 +40,7 @@
     "mongoose": "^5.0.7",
     "mongoose-auto-increment": "^5.0.1",
     "mongoose-seed": "^0.4.1",
+    "pg-promise": "^8.2.2",
     "promise-pg": "^0.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

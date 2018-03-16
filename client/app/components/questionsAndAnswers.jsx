@@ -42,7 +42,7 @@ class QuestionsAndAnswers extends React.Component {
           {this.state.realData.map((question, index) => (
             <Question
               question={question}
-              key={question.questionText}
+              key={question.questiontext}
             />
           ))}
         </div>

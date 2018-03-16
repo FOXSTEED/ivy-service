@@ -43,13 +43,13 @@ class Question extends React.Component {
 
         <Avatar
           avatar={this.props.question.avatar}
-          firstName={this.props.question.firstName}
-          lastName={this.props.question.lastName}
+          firstName={this.props.question.firstname}
+          lastName={this.props.question.lasname}
         />
 
         <div className={styles.questionAndAnswerContainer}>
 
-          <p className={styles.question}> {this.props.question.questionText} </p>
+          <p className={styles.question}> {this.props.question.questiontext} </p>
           <p className={styles.date}> {<Moment date={date}/>} </p>
 
           <button onClick={() => this.displayAnswerForm()} className={styles.button} >
