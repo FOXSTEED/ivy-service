@@ -1,12 +1,13 @@
-// import { Mongoose } from 'mongoose';
-
 const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
 
-mongoose.connect('mongodb://localhost/tripadviser');
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => console.log('something from mongoose'));
+let mdb;
+let collection;
+MongoClient.connect('mongodb://localhost/27017')
+  .then(() => {
+    mdb = clientConnect.db('ivydatabase');
+    collection = mdb.collection('guests');
+  });
 
 const questionSchema = mongoose.Schema({
   id: {
@@ -27,20 +28,20 @@ const questionSchema = mongoose.Schema({
 const QuestionModel = mongoose.model('Question', questionSchema);
 
 
-function getAll(callback) {
-  QuestionModel.find({}, callback);
-}
+// function getAll(callback) {
+//   QuestionModel.find({}, callback);
+// }
 
-function getById(id, callback) {
-  QuestionModel.find({ trip: id }, callback);
-}
+// function getById(id, callback) {
+//   QuestionModel.find({ trip: id }, callback);
+// }
 
-function removeAll(callback) {
-  QuestionModel.remove({}, callback);
-}
+// function removeAll(callback) {
+//   QuestionModel.remove({}, callback);
+// }
 
 async function addToDb(questions) {
-  const promise = await QuestionModel.insertMany(questions, callback);
+  const promise = await collection.insertMany(questions, callback);
   promise.catch((err)=>{
     console.log('Error! Can not seed data '+err)
   })
@@ -55,7 +56,7 @@ async function addToDb(questions) {
 
 
 exports.addToDb = addToDb;
-exports.getAll = getAll;
-exports.getById = getById;
-exports.removeAll = removeAll;
-exports.QuestionModel = QuestionModel;
+// exports.getAll = getAll;
+// exports.getById = getById;
+// exports.removeAll = removeAll;
+// exports.QuestionModel = QuestionModel;
