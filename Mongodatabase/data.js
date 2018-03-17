@@ -61,3 +61,5 @@ function addToDb(id) {
       console.log('something went wrong')
     })
 }
+
+console.log('testing')

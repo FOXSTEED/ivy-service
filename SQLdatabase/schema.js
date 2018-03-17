@@ -10,7 +10,7 @@ const dbivy = pgp({
   port: 5432,
   database: 'ivydatabase',
 });
-// console.log('pass')
+console.log('pass')
 
 const insertData = async function insertData(dataCollection, count) {
   // console.log('pass 6');

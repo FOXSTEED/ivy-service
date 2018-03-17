@@ -4,12 +4,12 @@ function getRandomNumBetween(min, max) {
   return Math.floor(Math.random() * ((max - min) + min));
 }
 
-function generateAnswers() {
+function generateAnswers(n, size, id, base) {
   const answers = [];
-  for (let i = 0; i < 50000; i += 1) {
+  for (let i = n; i < n+size; i += 1) {
     const answer = {};
-
-    answer.questionnumber = getRandomNumBetween(0, 1000000);
+    answer.id = i;
+    answer.question_id = getRandomNumBetween(id*base, id*base+base-1);
     answer.firstname = faker.name.firstName();
     answer.lastname = faker.name.lastName();
     answer.flag = faker.random.boolean();
@@ -23,11 +23,12 @@ function generateAnswers() {
   return answers;
 }
 
-function generateQuestions() {
+function generateQuestions(n, size) {
   let questions = [];
-  for (let i = 0; i < 50000; i += 1) {
+  for (let i = n; i < n+size; i += 1) {
     let question = {};
-    question.trip = getRandomNumBetween(0, 50000); 
+    question.id = i;
+    question.trip = getRandomNumBetween(0, 20000); 
     question.username = faker.internet.userName();
     question.firstname = faker.name.firstName();
     question.lastname = faker.name.lastName();
