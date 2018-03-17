@@ -1,7 +1,4 @@
 const faker = require('faker');
-const database = require('./data.js');
-
-
 
 function getRandomNumBetween(min, max) {
   return Math.floor(Math.random() * ((max - min) + min));
@@ -27,15 +24,10 @@ function generateAnswers() {
   return answers;
 }
 
-async function generateAttractions() {
+function generateQuestions(n) {
+  console.log('pass2')
   let questions = [];
-  for (let i = 0; i <= 10; i += 1) {
-    if (i !== 0 && i % 5 === 0) {
-      await database.addToDb(questions)
-      console.log('inserted '+ i/5)
-      questions = [];
-    }
-    
+  for (let i = n; i < n+10; i += 1) {
     let question = {};
     question.id = i;
     question.trip = getRandomNumBetween(0, 50000);
@@ -50,12 +42,7 @@ async function generateAttractions() {
 
     questions.push(question);
   }
-
-  mongoose.connection.close()
+  return questions
 }
 
-
-
-const attractionsData = generateAttractions();
-module.exports = attractionsData;
-
+exports.generateQuestions = generateQuestions;

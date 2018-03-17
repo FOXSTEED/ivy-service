@@ -65,7 +65,7 @@ const createTable = function createTable() {
     .then(async () => {
       console.log('created questions table');
       for (let i = 0; i < 20; i += 1) {
-        await insertData(fakeData.generateAttractions(), i);
+        await insertData(fakeData.generateQuestions(), i);
       }
     })
     .then(async () => {

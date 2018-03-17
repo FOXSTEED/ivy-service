@@ -23,7 +23,7 @@ function generateAnswers() {
   return answers;
 }
 
-function generateAttractions() {
+function generateQuestions() {
   let questions = [];
   for (let i = 0; i < 50000; i += 1) {
     let question = {};
@@ -41,6 +41,6 @@ function generateAttractions() {
   return questions;
 }
 
-exports.generateAttractions = generateAttractions;
+exports.generateQuestions = generateQuestions;
 exports.generateAnswers = generateAnswers;
 
