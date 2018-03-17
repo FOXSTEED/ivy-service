@@ -7,7 +7,7 @@ function getRandomNumBetween(min, max) {
 function generateAnswers() {
   const answers = [];
 
-  for (let i = 0; i <= getRandomNumBetween(1, 5); i += 1) {
+  for (let i = 0; i <= getRandomNumBetween(1, 9); i += 1) {
     const answer = {};
 
     answer.answerNumber = i;
@@ -24,13 +24,13 @@ function generateAnswers() {
   return answers;
 }
 
-function generateQuestions(n) {
-  console.log('pass2')
+function generateQuestions(n, size) {
   let questions = [];
-  for (let i = n; i < n+10; i += 1) {
+  // console.log('passss')
+  for (let i = n; i < n+size; i += 1) {
     let question = {};
     question.id = i;
-    question.trip = getRandomNumBetween(0, 50000);
+    question.trip = getRandomNumBetween(0, 5000);
     question.username = faker.internet.userName();
     question.firstName = faker.name.firstName();
     question.lastName = faker.name.lastName();
