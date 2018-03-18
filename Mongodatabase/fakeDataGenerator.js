@@ -7,16 +7,16 @@ function getRandomNumBetween(min, max) {
 function generateAnswers() {
   const answers = [];
 
-  for (let i = 0; i <= getRandomNumBetween(1, 9); i += 1) {
+  for (let i = 0; i < 2; i += 1) {
     const answer = {};
 
-    answer.answerNumber = i;
-    answer.firstName = faker.name.firstName();
-    answer.lastName = faker.name.lastName();
+    answer.answernumber = i;
+    answer.firstname = faker.name.firstName();
+    answer.lastname = faker.name.lastName();
     answer.flag = faker.random.boolean();
     answer.upvotes = getRandomNumBetween(0, 12);
     answer.downvotes = getRandomNumBetween(0, 7);
-    answer.answerText = faker.lorem.paragraph();
+    answer.answertext = faker.lorem.paragraph();
 
     answers.push(answer);
   }
@@ -26,18 +26,17 @@ function generateAnswers() {
 
 function generateQuestions(n, size) {
   let questions = [];
-  // console.log('passss')
   for (let i = n; i < n+size; i += 1) {
     let question = {};
     question.id = i;
-    question.trip = getRandomNumBetween(0, 5000);
+    question.trip = getRandomNumBetween(0, 100000);//
     question.username = faker.internet.userName();
-    question.firstName = faker.name.firstName();
-    question.lastName = faker.name.lastName();
+    question.firstname = faker.name.firstName();
+    question.lastname = faker.name.lastName();
     question.date = faker.date.past();
     question.flag = faker.random.boolean();
     question.avatar = faker.image.avatar();
-    question.questionText = faker.lorem.paragraph();
+    question.questiontext = faker.lorem.paragraph();
     question.answers = generateAnswers();
 
     questions.push(question);

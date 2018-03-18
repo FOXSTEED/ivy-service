@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const MongoClient = require('mongodb').MongoClient;
-const fakeData = require('./fakeData');
+const fakeData = require('./fakeDataGenerator');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const _ = require('ramda');
 
-const base = parseInt(3000000 / numCPUs);
+const base = parseInt(4000000 / numCPUs);
 const size = 10000; 
 
 if (cluster.isMaster) {
@@ -54,7 +54,6 @@ function addToDb(id) {
       }
     }
     getTime()
-    // console.time('time')
     insertBulk()
   })
     .catch(() => {
@@ -62,4 +61,3 @@ function addToDb(id) {
     })
 }
 
-console.log('testing')

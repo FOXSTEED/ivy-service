@@ -1,3 +1,6 @@
+Please do npm run seed-database-postgres to seed data in postgres and npm run seed-database-mongodb to seed data in mongoDB
+
+
 # Project Name
 
 > Project description

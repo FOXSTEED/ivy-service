@@ -1,5 +1,5 @@
 const pgp = require('pg-promise')();
-const fakeData = require('./fakeDatapostgres.js')
+const fakeData = require('./fakeDataCluster.js')
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const _ = require('ramda');

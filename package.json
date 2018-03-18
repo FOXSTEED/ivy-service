@@ -22,8 +22,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "seed-database": "node database/seed.js",
-    "seed-database-postgres": "node SQLdatabase/schema.js",
-    "seed-database-mongodb": "node Mongodatabase/data.js",
+    "seed-database-postgres": "node SQLdatabase/massive-insert.js",
+    "seed-database-mongodb": "node Mongodatabase/seedData.js",
     "start": "npm run-script build && npm run-script serve",
     "start-dev": " npm run serve-dev & npm run dev"
   },
