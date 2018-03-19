@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const database = require('../database/data.js');
+const mongoDatabase = require('../Mongodatabase/data.js');
+const sqlDatabase = require('../SQLdatabase/data.js');
 
 const app = express();
 const port = 3004;
@@ -14,24 +15,29 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-// app.get('/attractions', (req, res) => {
-//   database.getAll((err, data) => {
+
+// app.get('/api/listings/:id/q-and-a', (req, res) => {
+//   const requestId = Number(req.params.id);
+//   mongoDatabase.getById(requestId, (err, data) => {
 //     if (err) {
-//       console.log('error from get request /attractions');
-//       res.status(404).json({ message: 'No attractions' });
+//       res.status(404).json({ message: 'No attraction' });
 //     }
 //     res.json(data);
 //   });
 // });
 
+
 app.get('/api/listings/:id/q-and-a', (req, res) => {
   const requestId = Number(req.params.id);
-  database.getById(requestId, (err, data) => {
+  sqlDatabase.getById(requestId, (err, data) => {
     if (err) {
       res.status(404).json({ message: 'No attraction' });
     }
+    // console.log(data)
     res.json(data);
   });
 });
+
+
 
 app.listen(port, () => console.log(`listening on port ${port}`));

@@ -8,11 +8,11 @@ function getRandomNumBetween(min, max) {
 
 function generateAnswers(t, index, size) {
   const answers = [];
-  if (index < 800) {
+  if (index < 800) { //800
     for (let i = index*size; i < index*size + size; i += 1) {
       const answer = {};
       answer.id = i;
-      answer.question_id = getRandomNumBetween(0, 4000000); //
+      answer.question_id = getRandomNumBetween(0, 4000000); //4000000
       answer.firstname = faker.name.firstName();
       answer.lastname = faker.name.lastName();
       answer.flag = faker.random.boolean();
@@ -28,11 +28,11 @@ function generateAnswers(t, index, size) {
 
 function generateQuestions(t, index, size) {
   let questions = [];
-  if (index < 400) {
+  if (index < 400) { //400
     for (let i = index*size; i < index*size + size; i += 1) {
       let question = {};
       question.id = i;
-      question.trip = getRandomNumBetween(0, 100000); //
+      question.trip = getRandomNumBetween(0, 100000);
       question.username = faker.internet.userName();
       question.firstname = faker.name.firstName();
       question.lastname = faker.name.lastName();

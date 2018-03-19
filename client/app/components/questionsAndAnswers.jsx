@@ -20,6 +20,7 @@ class QuestionsAndAnswers extends React.Component {
     fetch(`http://localhost:3004/api/listings/${this.props.ID || idFromPathname || 0}/q-and-a/`)
       .then(res => res.json())
       .then((result) => {
+        console.log('pp',result)
         console.timeEnd()
         this.setState({ 
           realData: result,

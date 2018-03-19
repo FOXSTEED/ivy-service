@@ -15,7 +15,11 @@ const dbivy = pgp({
 
 
 const makeReady = async function makeReady() {
-  await db.none('CREATE DATABASE ivydatabase')
+  await db.none('DROP DATABASE ivydatabase')
+    .then(async () => {
+      console.log('Droped database');
+      await db.none('CREATE DATABASE ivydatabase')
+    })
     .then(async () => {
       console.log('Ivydatabase created');
       await dbivy.none('CREATE TABLE questions(' +
@@ -27,7 +31,7 @@ const makeReady = async function makeReady() {
     'date TEXT,' +
     'flag TEXT,' +
     'avatar TEXT,' +
-    'questiontext TEXT);')
+    'questiontext TEXT);');
     })
     .then(async () => {
       console.log('created table questions');
@@ -39,7 +43,7 @@ const makeReady = async function makeReady() {
     'flag TEXT,' +
     'upvotes TEXT,' +
     'downvotes TEXT,' +
-    'answertext TEXT);')
+    'answertext TEXT);');
     })
     .catch((err) => {
       console.log('something went wrong when make ready', err);
@@ -67,6 +71,9 @@ db.tx((t) => {
           console.log('inserting the ', index*10000, ' data to questions table')
           return fakeData.generateQuestions(t, index, size)
             .then((data) => {
+              if (data.length === 0) {
+                return;
+              }
               if (data) {
                 const insert = pgp.helpers.insert(data, csQ);
                 return dbivy.none(insert);
@@ -78,11 +85,14 @@ db.tx((t) => {
             })
         });
       })
-      db.tx('massive-insert', (t) => {
+      await db.tx('massive-insert', (t) => {
         return t.sequence((index) => {
           console.log('inserting the ', index*10000, ' data to answers table')
           return fakeData.generateAnswers(t, index, size)
             .then((data) => {
+              if (data.length === 0) {
+                return;
+              }
               if (data) {
                 const insert = pgp.helpers.insert(data, csA);
                 return dbivy.none(insert);
@@ -97,7 +107,13 @@ db.tx((t) => {
     }),
   ]);
 })
+  .then(async () => {
+    console.log('start making indexes');
+    await dbivy.none("CREATE INDEX index_trip ON questions(trip)");
+    await dbivy.none('CREATE INDEX index_question_id ON answers(question_id)');
+  })
   .catch((error) => {
-    console.log('something went wrong')
+    console.log('something went wrong', error)
   });
+
 
