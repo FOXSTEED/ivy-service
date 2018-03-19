@@ -5,12 +5,12 @@ const MongoClient = require('mongodb').MongoClient;
 let collection;
 
 MongoClient.connect('mongodb://localhost/').then((client) => {
-  const db = client.db('ivydatabase2');
+  const db = client.db('ivydatabase');
   collection = db.collection('questions');
 })
 
 const getById = function getById(id, callback) {
-  collection.find({ trip: id }).toArray()
+  collection.find({ id }).toArray()
     .then((data) => {
       callback(null, data)
     })
