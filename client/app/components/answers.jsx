@@ -6,15 +6,16 @@ import styles from '../styling/app.css';
 const Answers = props => (
   <div className={styles.answersContainer}>
     {props.answers.map((answer, index) => (
+      // console.log(answer)
       <Answer
         answer={answer}
         key={index}
-        answerText={answer.answerText}
+        answerText={answer.answertext}
         downvotes={answer.downvotes}
         upvotes={answer.upvotes}
         flag={answer.flag}
-        firstName={answer.firstName}
-        lastName={answer.lastName}
+        firstName={answer.firstname}
+        lastName={answer.lastname}
       />
     ))}
   </div>

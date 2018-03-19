@@ -37,14 +37,13 @@ class Question extends React.Component {
 
   render() {
     const date = new Date(this.props.question.date.toString().slice(0, 10));
-  
     return (
       <div className={styles.questionContainer}>
 
         <Avatar
           avatar={this.props.question.avatar}
           firstName={this.props.question.firstname}
-          lastName={this.props.question.lasname}
+          lastName={this.props.question.lastname}
         />
 
         <div className={styles.questionAndAnswerContainer}>
