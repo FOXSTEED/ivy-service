@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const mongoDatabase = require('../Mongodatabase/data.js');
+const mongoDatabase = require('../Mongodatabase/data.js');
 const sqlDatabase = require('../SQLdatabase/data.js');
 
 const app = express();
@@ -16,28 +16,26 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 
-// app.get('/api/listings/:id/q-and-a', (req, res) => {
-//   const requestId = Number(req.params.id);
-//   mongoDatabase.getById(requestId, (err, data) => {
-//     if (err) {
-//       res.status(404).json({ message: 'No attraction' });
-//     }
-//     // console.log(data)
-//     res.json(data[0].questions);
-//   });
-// });
-
-
 app.get('/api/listings/:id/q-and-a', (req, res) => {
   const requestId = Number(req.params.id);
-  sqlDatabase.getById(requestId, (err, data) => {
+  mongoDatabase.getById(requestId, (err, data) => {
     if (err) {
       res.status(404).json({ message: 'No attraction' });
     }
-    // console.log(data)
-    res.json(data);
+    res.json(data[0].questions);
   });
 });
+
+
+// app.get('/api/listings/:id/q-and-a', (req, res) => {
+//   const requestId = Number(req.params.id);
+//   sqlDatabase.getById(requestId, (err, data) => {
+//     if (err) {
+//       res.status(404).json({ message: 'No attraction' });
+//     }
+//     res.json(data);
+//   });
+// });
 
 
 
