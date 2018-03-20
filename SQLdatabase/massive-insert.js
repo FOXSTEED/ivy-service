@@ -139,6 +139,7 @@ db.tx((t) => {
     await dbivy.none('CREATE INDEX index_attractions ON attractions(id)');
     await dbivy.none('CREATE INDEX index_attraction ON questions(attraction_id)');
     await dbivy.none('CREATE INDEX index_question_id ON answers(question_id)');
+    getTime() 
   })
   .catch((error) => {
     console.log('something went wrong', error)

@@ -53,8 +53,10 @@ function addToDb(id) {
         process.exit();
       }
     }
+
+
     getTime()
-    insertBulk()
+    await insertBulk()
   })
     .catch(() => {
       console.log('something went wrong')
