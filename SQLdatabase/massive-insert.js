@@ -48,8 +48,6 @@ const makeReady = async function makeReady() {
     'firstname TEXT,' +
     'lastname TEXT,' +
     'flag TEXT,' +
-    'upvotes TEXT,' +
-    'downvotes TEXT,' +
     'answertext TEXT);');
     })
     .catch((err) => {

@@ -8,22 +8,32 @@ const dbivy = pgp({
 });
 
 const getById = function getById(id, callback) {
-  dbivy.any('SELECT * FROM questions WHERE trip= $1', [id])
-    .then(async (data) => {
-      const newData = await data.map(async (question) => {
-        const questionId = question.id;
-        return dbivy.any('SELECT * FROM answers WHERE question_id= $1', [questionId])
-          .then((answers) => {
-            question.answers = answers;
-            return question
-          })
-      })
-      console.log(newData)
-      callback(null, newData)
+  dbivy.any('SELECT * FROM attractions WHERE id= $1', [id])
+    .then(async (attraction) => {
+      await dbivy.any('SELECT * FROM questions WHERE attraction_id= $1', [attraction[0].id])
+        .then(async (questions) => {
+          let arr = []
+          questions.forEach(async (question) => {
+            await dbivy.any('SELECT * FROM answers WHERE question_id= $1', [question.id])
+              .then((answers) => {
+                question.answers = answers;
+                arr.push(question);
+              })
+              .then(() => {
+                callback(null, arr);
+              })
+              .catch((err) =>  {
+                callback(err, null);
+              });
+          });
+        })
+        .catch((err) =>  {
+          console.log('can not get questions')
+        });
     })
     .catch((err) =>  {
-      callback(err, null)
+      console.log('can not get attractions')
     });
-}
+};
 
 exports.getById = getById;
