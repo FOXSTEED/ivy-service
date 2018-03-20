@@ -5,7 +5,7 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const _ = require('ramda');
 
-const base = parseInt(4000000 / numCPUs);
+const base = parseInt(10000000 / numCPUs);
 const size = 10000; 
 
 if (cluster.isMaster) {
@@ -35,12 +35,12 @@ function getTime() {
 
 function addToDb(id) {
   MongoClient.connect('mongodb://localhost/').then(async (client) => {
-    const db = client.db('ivydatabase2');
+    const db = client.db('ivydatabase');
     const collection = db.collection('questions');
     let count = 0
     const insertTimes = base/size
     async function insertBulk() {
-      await collection.insertMany(fakeData.generateQuestions(id*base+count*size, size))
+      await collection.insertMany(fakeData.generateAttractions(id*base+count*size+1, size))
         .catch((err) => {
           console.log('Error! Can not seed data '+err)
         })

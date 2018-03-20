@@ -16,27 +16,28 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 
-// app.get('/api/listings/:id/q-and-a', (req, res) => {
-//   const requestId = Number(req.params.id);
-//   mongoDatabase.getById(requestId, (err, data) => {
-//     if (err) {
-//       res.status(404).json({ message: 'No attraction' });
-//     }
-//     res.json(data);
-//   });
-// });
-
-
 app.get('/api/listings/:id/q-and-a', (req, res) => {
   const requestId = Number(req.params.id);
-  sqlDatabase.getById(requestId, (err, data) => {
+  mongoDatabase.getById(requestId, (err, data) => {
     if (err) {
       res.status(404).json({ message: 'No attraction' });
     }
-    // console.log(data)
-    res.json(data);
+    console.log(data)
+    res.json(data[0].questions);
   });
 });
+
+
+// app.get('/api/listings/:id/q-and-a', (req, res) => {
+//   const requestId = Number(req.params.id);
+//   sqlDatabase.getById(requestId, (err, data) => {
+//     if (err) {
+//       res.status(404).json({ message: 'No attraction' });
+//     }
+//     // console.log(data)
+//     res.json(data);
+//   });
+// });
 
 
 
