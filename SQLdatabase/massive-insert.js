@@ -15,11 +15,11 @@ const dbivy = pgp({
 
 
 const makeReady = async function makeReady() {
-  await db.none('DROP DATABASE ivydatabase')
-    .then(async () => {
-      console.log('Droped database');
-      await db.none('CREATE DATABASE ivydatabase')
-    })
+  await db.none('CREATE DATABASE ivydatabase')
+    // .then(async () => {
+    //   console.log('Droped database');
+    //   await db.none('CREATE DATABASE ivydatabase')
+    // })
     .then(async () => {
       console.log('Ivydatabase created');
       await dbivy.none('CREATE TABLE attractions(' +
@@ -67,6 +67,7 @@ const csAt = new pgp.helpers.ColumnSet(['id'], { table: 'attractions'})
 const csQ = new pgp.helpers.ColumnSet(['id', 'attraction_id', 'username', 'firstname', 'lastname', 'date', 'flag', 'avatar', 'questiontext'], { table: 'questions'});
 const csA = new pgp.helpers.ColumnSet(['id', 'question_id', 'firstname', 'lastname', 'flag', 'answertext'], { table: 'answers'});
 const size = 10000;
+const size2 = 20000;
 db.tx((t) => {
   return t.batch([
     db.task(async () => {
@@ -86,7 +87,6 @@ db.tx((t) => {
               }
             })
             .catch((error) => {
-              getTime()
               console.log('can not insert data to attractions table', error)
             })
         });
@@ -94,7 +94,7 @@ db.tx((t) => {
       await db.tx('massive-insert', (t) => {
         return t.sequence((index) => {
           console.log('inserting the ', index*10000, ' data to questions table')
-          return fakeData.generateQuestions(t, index, size)
+          return fakeData.generateQuestions(t, index, size2, size)
             .then((data) => {
               if (data.length === 0) {
                 return;
@@ -105,7 +105,6 @@ db.tx((t) => {
               }
             })
             .catch((error) => {
-              getTime()
               console.log('can not insert data to questions table', error)
             })
         });
@@ -113,7 +112,7 @@ db.tx((t) => {
       await db.tx('massive-insert', (t) => {
         return t.sequence((index) => {
           console.log('inserting the ', index*10000, ' data to answers table')
-          return fakeData.generateAnswers(t, index, size)
+          return fakeData.generateAnswers(t, index, size2, size)
             .then((data) => {
               if (data.length === 0) {
                 return;
@@ -124,7 +123,6 @@ db.tx((t) => {
               }
             })
             .catch((error) => {
-              getTime()
               console.log('can not insert data to answers table', error)
             })
         });
@@ -133,6 +131,7 @@ db.tx((t) => {
   ]);
 })
   .then(async () => {
+    getTime()
     console.log('start making indexes');
     await dbivy.none('CREATE INDEX index_attractions ON attractions(id)');
     await dbivy.none('CREATE INDEX index_attraction ON questions(attraction_id)');
