@@ -22,7 +22,7 @@ app.get('/api/listings/:id/q-and-a', (req, res) => {
     if (err) {
       res.status(404).json({ message: 'No attraction' });
     }
-    console.log(data)
+    // console.log(data)
     res.json(data[0].questions);
   });
 });

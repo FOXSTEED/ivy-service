@@ -36,7 +36,7 @@ function getTime() {
 function addToDb(id) {
   MongoClient.connect('mongodb://localhost/').then(async (client) => {
     const db = client.db('ivydatabase');
-    const collection = db.collection('questions');
+    const collection = db.collection('attractions');
     let count = 0
     const insertTimes = base/size
     async function insertBulk() {
@@ -48,15 +48,21 @@ function addToDb(id) {
       if (insertTimes > count) {
         insertBulk()
       } else {
+        await collection.createIndex({ id: 1 })
+          .then((doc) => {
+            console.log('index added ', doc)
+          })
+          .catch((err) => {
+            console.log('can not create index ', err)
+          })
         getTime()
         client.close();
         process.exit();
       }
     }
-
-
     getTime()
     await insertBulk()
+    
   })
     .catch(() => {
       console.log('something went wrong')
