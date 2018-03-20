@@ -22,9 +22,16 @@ const makeReady = async function makeReady() {
     })
     .then(async () => {
       console.log('Ivydatabase created');
+      await dbivy.none('CREATE TABLE attractions(' +
+    'idp SERIAL PRIMARY KEY,' +
+    'id INTEGER UNIQUE);');
+    })
+    .then(async () => {
+      console.log('created table attractions');
       await dbivy.none('CREATE TABLE questions(' +
-    'id INTEGER PRIMARY KEY,' +
-    'trip INTEGER,' +
+    'idp SERIAL PRIMARY KEY,' +
+    'id INTEGER,' +
+    'attraction_id INTEGER REFERENCES attractions(id),' +
     'username TEXT,' +
     'firstname TEXT,' +
     'lastname TEXT,' +
@@ -58,14 +65,34 @@ function getTime() {
   console.log(hour+':'+minute+':'+second)
 }
 
-const csQ = new pgp.helpers.ColumnSet(['id', 'trip', 'username', 'firstname', 'lastname', 'date', 'flag', 'avatar', 'questiontext'], { table: 'questions'});
-const csA = new pgp.helpers.ColumnSet(['id', 'question_id', 'firstname', 'lastname', 'flag', 'upvotes', 'downvotes', 'answertext'], { table: 'answers'});
+const csAt = new pgp.helpers.ColumnSet(['id'], { table: 'attractions'})
+const csQ = new pgp.helpers.ColumnSet(['id', 'attraction_id', 'username', 'firstname', 'lastname', 'date', 'flag', 'avatar', 'questiontext'], { table: 'questions'});
+const csA = new pgp.helpers.ColumnSet(['id', 'question_id', 'firstname', 'lastname', 'flag', 'answertext'], { table: 'answers'});
 const size = 10000;
 db.tx((t) => {
   return t.batch([
     db.task(async () => {
       await makeReady()
       getTime()
+      await db.tx('massive-insert', (t) => {
+        return t.sequence((index) => {
+          console.log('inserting the ', index*10000, ' data to attractions table')
+          return fakeData.generateAttractions(t, index, size)
+            .then((data) => {
+              if (data.length === 0) {
+                return;
+              }
+              if (data) {
+                const insert = pgp.helpers.insert(data, csAt);
+                return dbivy.none(insert);
+              }
+            })
+            .catch((error) => {
+              getTime()
+              console.log('can not insert data to attractions table', error)
+            })
+        });
+      })
       await db.tx('massive-insert', (t) => {
         return t.sequence((index) => {
           console.log('inserting the ', index*10000, ' data to questions table')
@@ -109,7 +136,8 @@ db.tx((t) => {
 })
   .then(async () => {
     console.log('start making indexes');
-    await dbivy.none("CREATE INDEX index_trip ON questions(trip)");
+    await dbivy.none('CREATE INDEX index_attractions ON attractions(id)');
+    await dbivy.none('CREATE INDEX index_attraction ON questions(attraction_id)');
     await dbivy.none('CREATE INDEX index_question_id ON answers(question_id)');
   })
   .catch((error) => {

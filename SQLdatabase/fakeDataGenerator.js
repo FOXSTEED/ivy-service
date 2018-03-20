@@ -6,33 +6,25 @@ function getRandomNumBetween(min, max) {
   return Math.floor(Math.random() * ((max - min) + min));
 }
 
-function generateAnswers(t, index, size) {
-  const answers = [];
-  if (index < 800) { //800
-    for (let i = index*size; i < index*size + size; i += 1) {
-      const answer = {};
-      answer.id = i;
-      answer.question_id = getRandomNumBetween(0, 4000000); //4000000
-      answer.firstname = faker.name.firstName();
-      answer.lastname = faker.name.lastName();
-      answer.flag = faker.random.boolean();
-      answer.upvotes = getRandomNumBetween(0, 12);
-      answer.downvotes = getRandomNumBetween(0, 7);
-      answer.answertext = faker.lorem.paragraph();
-
-      answers.push(answer);
+function generateAttractions(t, index, size) {
+  const attractions = [];
+  if (index < 1000) { //1000
+    for (let i = index*size+1; i < index*size+1+ size; i += 1) {
+      const attraction = {};
+      attraction.id = i;
+      attractions.push(attraction);
     }
 }
-  return Promise.resolve(answers);
+  return Promise.resolve(attractions);
 }
 
 function generateQuestions(t, index, size) {
-  let questions = [];
-  if (index < 400) { //400
-    for (let i = index*size; i < index*size + size; i += 1) {
+  const questions = [];
+  if (index < 1000) { //1000
+    for (let i = index*size+1; i < index*size+1+size; i += 1) {
       let question = {};
       question.id = i;
-      question.trip = getRandomNumBetween(0, 100000);
+      question.attraction_id = i;
       question.username = faker.internet.userName();
       question.firstname = faker.name.firstName();
       question.lastname = faker.name.lastName();
@@ -46,6 +38,27 @@ function generateQuestions(t, index, size) {
   return Promise.resolve(questions);
 }
 
+function generateAnswers(t, index, size) {
+  const answers = [];
+  if (index < 1000) { //1000
+    for (let i = index*size+1; i < index*size+1 + size; i += 1) {
+      const answer = {};
+      answer.id = i;
+      // answer.question_id = getRandomNumBetween(0, 10000000);
+      answer.question_id = i;
+      answer.firstname = faker.name.firstName();
+      answer.lastname = faker.name.lastName();
+      answer.flag = faker.random.boolean();
+      answer.answertext = faker.lorem.paragraph();
+
+      answers.push(answer);
+    }
+}
+  return Promise.resolve(answers);
+}
+
+
+
 exports.generateQuestions = generateQuestions;
 exports.generateAnswers = generateAnswers;
-
+exports.generateAttractions = generateAttractions;
