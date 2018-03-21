@@ -16,6 +16,7 @@ class QuestionsAndAnswers extends React.Component {
 
   componentDidMount() {
     const idFromPathname = window.location.pathname.split('/')[2];
+    console.log(window.location.pathname)
     console.time()
     fetch(`http://localhost:3004/api/listings/${this.props.ID || idFromPathname || 0}/q-and-a/`)
       .then(res => res.json())
