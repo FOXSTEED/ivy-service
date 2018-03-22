@@ -29,8 +29,6 @@ function generateQuestions(n, size) {
   // let questions = [];
   // for (let i = n; i < n+size; i += 1) {
   let question = {};
-  // question.id = i;
-  // question.trip = 
   question.username = faker.internet.userName();
   question.firstname = faker.name.firstName();
   question.lastname = faker.name.lastName();
@@ -51,7 +49,7 @@ function generateAttractions(n, size) {
   for (let i = n; i < n+size; i += 1) {
     let attraction = {}
     attraction.id = i;
-    attraction.questions = [generateQuestions()]
+    attraction.questions = [generateQuestions(), generateQuestions()]
     attractions.push(attraction)
   }
   return attractions;

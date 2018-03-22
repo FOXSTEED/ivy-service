@@ -4,4 +4,4 @@ import QuestionsAndAnswers from './components/questionsAndAnswers.jsx';
 
 
 
-window.QuestionsAndAnswers = QuestionsAndAnswers;
+export default QuestionsAndAnswers;
