@@ -17,30 +17,53 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 
+const redis = require('redis');
+const REDIS_PORT = process.env.REDIS_PORT;
+const client = redis.createClient(REDIS_PORT);
+
+function cache(req, res, next) {
+  const id = req.params.id
+  client.get(id, function (err, data) {
+      if (err) throw err;
+
+      if (data != null) {
+          res.send(JSON.parse(data));
+      } else {
+          next();
+      }
+  });
+}
+
+function getData(req, res, next) {
+  const requestId= req.params.id
+  mongoDatabase.getById(requestId, (err, data) => {
+    if (err) {
+      res.status(404).json({ message: 'No attraction' });
+    }
+    console.log(data[0].questions)
+    client.setex(requestId, 3600, JSON.stringify(data[0].questions));
+    
+    res.json(data[0].questions);
+  });
+};
+
+app.get('/api/listings/:id/q-and-a', cache, getData);
+
+
+
+
+
 // app.get('/api/listings/:id/q-and-a', (req, res) => {
 //   const requestId = Number(req.params.id);
-//   // console.time() 
-//   mongoDatabase.getById(requestId, (err, data) => {
+//   // console.time()
+//   sqlDatabase.getById(requestId, (err, data) => {
 //     if (err) {
 //       res.status(404).json({ message: 'No attraction' });
 //     }
 //     // console.timeEnd()
-//     res.json(data[0].questions);
+//     res.json(data);
 //   });
 // });
-
-
-app.get('/api/listings/:id/q-and-a', (req, res) => {
-  const requestId = Number(req.params.id);
-  // console.time()
-  sqlDatabase.getById(requestId, (err, data) => {
-    if (err) {
-      res.status(404).json({ message: 'No attraction' });
-    }
-    // console.timeEnd()
-    res.json(data);
-  });
-});
 
 
 
