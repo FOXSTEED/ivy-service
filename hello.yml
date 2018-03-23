@@ -2,7 +2,7 @@ config:
   target: 'http://localhost:3004'
   phases:
     - duration: 20
-      arrivalRate: 600
+      arrivalRate: 10
   processor: "./artillery-config.js"
 scenarios:
   - name: "Register a user"
@@ -10,4 +10,4 @@ scenarios:
       - function: "getRandomNum"
       - get:
           url: '/api/listings/{{ id }}/q-and-a'
-      
+      - log:'sent a reuqest {{ id }}'
