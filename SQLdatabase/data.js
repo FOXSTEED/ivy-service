@@ -8,9 +8,10 @@ const dbivy = pgp({
 });
 
 const getById = function getById(id, callback) {
+  console.log('dataside')
+  console.time()
   dbivy.any('SELECT * FROM attractions WHERE id= $1', [id])
     .then(async (attraction) => {
-      console.time()
       await dbivy.any('SELECT * FROM questions WHERE attraction_id= $1', [attraction[0].id])
         .then(async (questions) => {
           const arr = []
@@ -19,11 +20,7 @@ const getById = function getById(id, callback) {
             questions[i].answers = answers;
             arr.push(questions[i])
           }
-          return arr
-        })
-        .then((arr) => {
-          // console.log('pass2')
-          // console.log('aaaaa', arr)
+          console.timeEnd()
           callback(null, arr)
         })
         .catch((err) =>  {

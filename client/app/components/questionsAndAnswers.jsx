@@ -10,18 +10,17 @@ class QuestionsAndAnswers extends React.Component {
     this.state = {
       realData: [],
       loading: true,
-      // pathname: window.location.pathname,
     };
+    this.componentDidMount = this.componentDidMount.bind(this)
   }
 
   componentDidMount() {
-    const idFromPathname = window.location.pathname.split('/')[2];
-    console.log(window.location.pathname)
+    const idFromPathname = this.props.id
+    console.log(idFromPathname, "idFromPathname")
     console.time()
     fetch(`http://localhost:3004/api/listings/${this.props.ID || idFromPathname || 0}/q-and-a/`)
       .then(res => res.json())
       .then((result) => {
-        console.log('pp',result)
         console.timeEnd()
         this.setState({ 
           realData: result,
@@ -57,4 +56,4 @@ class QuestionsAndAnswers extends React.Component {
 }
 
 export default QuestionsAndAnswers;
-window.QuestionsAndAnswers = QuestionsAndAnswers;
+
