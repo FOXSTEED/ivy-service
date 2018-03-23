@@ -40,8 +40,9 @@ function getData(req, res, next) {
     if (err) {
       res.status(404).json({ message: 'No attraction' });
     }
-    client.setex(requestId, 3600, JSON.stringify(data[0].questions));
     console.log(data[0].questions)
+    client.setex(requestId, 3600, JSON.stringify(data[0].questions));
+    
     res.json(data[0].questions);
   });
 };

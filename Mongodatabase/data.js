@@ -10,7 +10,8 @@ const getById = function getById(id, callback) {
   // collection.find().hint({ id }).limit(1).toArray()
   console.log('dataside')
   console.time()
-  collection.find({ id:id }).toArray()
+  id = JSON.parse(id)
+  collection.find({ id }).toArray()
     .then((data) => {
       console.timeEnd()
       callback(null, data)
