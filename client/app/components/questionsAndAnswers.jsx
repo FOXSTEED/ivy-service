@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 import Question from './question.jsx';
 import Header from './header.jsx';
 import styles from '../styling/app.css';
+import styled from 'styled-components';
+
+const Main = styled.div`
+  padding: 10px;
+`;
+
 
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
@@ -37,11 +43,8 @@ class QuestionsAndAnswers extends React.Component {
     }
 
     return (
-      <div className={styles.main}>
-
-        <Header />
-
-        <div className={styles.allQuestionsAndAnswersContainer}>
+      <Main>
+        <div>
           {this.state.realData.map((question, index) => (
             <Question
               question={question}
@@ -49,8 +52,7 @@ class QuestionsAndAnswers extends React.Component {
             />
           ))}
         </div>
-
-      </div>
+      </Main>
     );
   }
 }
