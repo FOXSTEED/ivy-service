@@ -9,10 +9,11 @@ MongoClient.connect('mongodb://localhost/').then((client) => {
 const getById = function getById(id, callback) {
   // collection.find().hint({ id }).limit(1).toArray()
   console.log('dataside')
-  console.time()
-  collection.find({ id:id }).toArray()
+  console.time('time')
+  const a = JSON.parse(id)
+  collection.find({ id: a }).toArray()
     .then((data) => {
-      console.timeEnd()
+      console.timeEnd('time')
       callback(null, data)
     })
     .catch((err) => {
