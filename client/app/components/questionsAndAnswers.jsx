@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Question from './question.jsx';
 import Header from './header.jsx';
-import styles from '../styling/app.css';
 import styled from 'styled-components';
 
 const Main = styled.div`
@@ -10,7 +9,7 @@ const Main = styled.div`
 `;
 
 
-class QuestionsAndAnswers extends React.Component {
+export default class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +20,7 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   componentDidMount() {
-    const idFromPathname = this.props.id
+    const idFromPathname = this.props.itemid;
     console.log(idFromPathname, "idFromPathname")
     console.time()
     fetch(`http://localhost:3004/api/listings/${this.props.ID || idFromPathname || 0}/q-and-a/`)
@@ -57,5 +56,4 @@ class QuestionsAndAnswers extends React.Component {
   }
 }
 
-export default QuestionsAndAnswers;
 

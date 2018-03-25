@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from '../styling/app.css';
 import styled from 'styled-components';
 import { Button } from './answerSubmissionForm.jsx';
 import { SecondaryButton } from './showAnswersButton.jsx';

@@ -1,6 +1,5 @@
 import React from 'react';
 import QuestionSubmissionForm from './questionSubmissionForm.jsx';
-import styles from '../styling/app.css';
 import styled from 'styled-components';
 
 const HeaderCss = styled.div`

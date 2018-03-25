@@ -5,7 +5,6 @@ import Avatar from './avatar.jsx';
 import { ShowAnswersButton } from './showAnswersButton.jsx';
 import { AnswerSubmissionForm, Button } from './answerSubmissionForm.jsx';
 import Moment from 'react-moment';
-import styles from '../styling/app.css';
 import styled from 'styled-components';
 
 const QuestionContainer = styled.div`

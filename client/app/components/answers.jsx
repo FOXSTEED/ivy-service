@@ -1,6 +1,5 @@
 import React from 'react';
 import Answer from './answer.jsx';
-import styles from '../styling/app.css';
 
 
 const Answers = props => (
