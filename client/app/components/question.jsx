@@ -2,10 +2,28 @@ import 'moment-timezone';
 import React from 'react';
 import Answers from './answers.jsx';
 import Avatar from './avatar.jsx';
-import ShowAnswersButton from './showAnswersButton.jsx';
-import AnswerSubmissionForm from './answerSubmissionForm.jsx';
+import { ShowAnswersButton } from './showAnswersButton.jsx';
+import { AnswerSubmissionForm, Button } from './answerSubmissionForm.jsx';
 import Moment from 'react-moment';
-import styles from '../styling/app.css';
+import styled from 'styled-components';
+
+const QuestionContainer = styled.div`
+  display: flex;
+  margin-bottom: 10px;
+  border-top-style: solid;
+  border-color: lightgrey;
+  border-width: 1px; 
+`;
+
+const QuestionCss = styled.p`
+  font-family: Arial, Tahoma, sans-serif;
+`;
+
+const Data = styled.p`
+  font-family: Arial, Tahoma, sans-serif;
+  font-size: 11px;
+  color: rgb(128,128,128);
+`;
 
 Moment.globalFormat = 'MMMM D YYYY';
 
@@ -38,7 +56,7 @@ class Question extends React.Component {
   render() {
     const date = new Date(this.props.question.date.toString().slice(0, 10));
     return (
-      <div className={styles.questionContainer}>
+      <QuestionContainer>
 
         <Avatar
           avatar={this.props.question.avatar}
@@ -46,14 +64,13 @@ class Question extends React.Component {
           lastName={this.props.question.lastname}
         />
 
-        <div className={styles.questionAndAnswerContainer}>
+        <div>
+          <QuestionCss>{this.props.question.questiontext}</QuestionCss>
+          <Data>{<Moment date={date}/>}</Data>
 
-          <p className={styles.question}> {this.props.question.questiontext} </p>
-          <p className={styles.date}> {<Moment date={date}/>} </p>
-
-          <button onClick={() => this.displayAnswerForm()} className={styles.button} >
+          <Button onClick={() => this.displayAnswerForm()}>
             Answer
-          </button>
+          </Button>
 
           <ShowAnswersButton 
             displayAllAnswers={this.displayAllAnswers} 
@@ -76,7 +93,7 @@ class Question extends React.Component {
 
         </div>
 
-      </div>
+      </QuestionContainer>
     );
   }
 }

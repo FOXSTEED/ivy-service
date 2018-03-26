@@ -1,12 +1,10 @@
 import React from 'react';
 import Answer from './answer.jsx';
-import styles from '../styling/app.css';
 
 
 const Answers = props => (
-  <div className={styles.answersContainer}>
+  <div>
     {props.answers.map((answer, index) => (
-      // console.log(answer)
       <Answer
         answer={answer}
         key={index}

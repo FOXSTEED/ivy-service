@@ -1,12 +1,12 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const mongoDatabase = require('../Mongodatabase/data.js');
-const sqlDatabase = require('../SQLdatabase/data.js');
-const nr = require('newrelic');
+// const express = require('express');
+// const bodyParser = require('body-parser');
+// const cors = require('cors');
+// const mongoDatabase = require('../Mongodatabase/data.js');
+// const sqlDatabase = require('../SQLdatabase/data.js');
+// const nr = require('newrelic');
 
-const app = express();
-const port = 3004;
+// const app = express();
+// const port = 3004;
 
 // app.use('/listings/:id/q-and-a', express.static(`${__dirname}/../client/public`));
 // app.use('/listings/:id/', express.static(`${__dirname}/../client/public`));
@@ -44,4 +44,4 @@ const port = 3004;
 
 
 
-app.listen(port, () => console.log(`listening on port ${port}`));
+// app.listen(port, () => console.log(`listening on port ${port}`));

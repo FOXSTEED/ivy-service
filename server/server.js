@@ -1,14 +1,14 @@
+const nr = require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoDatabase = require('../Mongodatabase/data.js');
 const sqlDatabase = require('../SQLdatabase/data.js');
-const nr = require('newrelic');
+
 
 const app = express();
 const port = 3004;
 
-app.use('/listings/:id/q-and-a', express.static(`${__dirname}/../client/public`));
 app.use('/listings/:id/', express.static(`${__dirname}/../client/public`));
 app.use(express.static(`${__dirname}/../client/public`));
 
@@ -27,6 +27,7 @@ function cache(req, res, next) {
       if (err) throw err;
 
       if (data != null) {
+        console.log('sending data from cache')
           res.send(JSON.parse(data));
       } else {
           next();
@@ -40,9 +41,7 @@ function getData(req, res, next) {
     if (err) {
       res.status(404).json({ message: 'No attraction' });
     }
-    console.log(data[0].questions)
     client.setex(requestId, 3600, JSON.stringify(data[0].questions));
-    
     res.json(data[0].questions);
   });
 };
