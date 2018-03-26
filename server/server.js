@@ -27,7 +27,7 @@ function cache(req, res, next) {
       if (err) throw err;
 
       if (data != null) {
-        console.log('sending data from cache')
+        // console.log('sending data from cache')
           res.send(JSON.parse(data));
       } else {
           next();
