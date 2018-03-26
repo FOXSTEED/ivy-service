@@ -20,8 +20,8 @@ export default class QuestionsAndAnswers extends React.Component {
   }
 
   componentDidMount() {
-    const idFromPathname = this.props.itemid;
-    console.log(idFromPathname, "idFromPathname")
+    let path = window.location.pathname.split('/');
+    let idFromPathname = Number(path[path.length-2])
     console.time()
     fetch(`http://localhost:3004/api/listings/${this.props.ID || idFromPathname || 0}/q-and-a/`)
       .then(res => res.json())
