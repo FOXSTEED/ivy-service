@@ -1,12 +1,16 @@
 config:
   target: 'http://localhost:3004'
+  http:
+        pool: 10
   phases:
-    - duration: 10
-      arrivalRate: 300
+    - duration: 60
+      arrivalRate: 5
   processor: "./artillery-config.js"
 scenarios:
   - name: "Register a user"
     flow:
-      - function: "getRandomNum"
-      - get:
-          url: '/api/listings/{{ id }}/q-and-a'
+      - loop:
+        - function: "getRandomNum"
+        - get:
+            url: '/api/listings/{{ id }}/q-and-a'
+        count: 100
