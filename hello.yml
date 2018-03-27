@@ -13,4 +13,4 @@ scenarios:
         - function: "getRandomNum"
         - get:
             url: '/api/listings/{{ id }}/q-and-a'
-        count: 1000
+        count: 100

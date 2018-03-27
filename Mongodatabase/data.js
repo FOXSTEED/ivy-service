@@ -1,6 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
 
-
 let db;
 let collection;
 
