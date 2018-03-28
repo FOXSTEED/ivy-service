@@ -18,8 +18,9 @@ app.use(cors());
 
 
 const redis = require('redis');
-const REDIS_PORT = process.env.REDIS_PORT;
-const client = redis.createClient(REDIS_PORT);
+const client = redis.createClient({
+    host: 'redis'
+});
 
 function cache(req, res, next) {
   const id = req.params.id
