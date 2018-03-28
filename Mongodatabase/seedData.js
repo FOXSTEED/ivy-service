@@ -5,8 +5,8 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const _ = require('ramda');
 
-const base = parseInt(10000 / numCPUs);
-const size = 1000; 
+const base = parseInt(10000000 / numCPUs);
+const size = 10000; 
 
 if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
