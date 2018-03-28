@@ -3,7 +3,7 @@ const MongoClient = require('mongodb').MongoClient;
 let db;
 let collection;
 
-MongoClient.connect('mongodb://localhost/', { poolSize: 10 }).then((client) => {
+MongoClient.connect('mongodb://database/', { poolSize: 10 }).then((client) => {
   console.log('pass')
   db = client.db('ivydatabase');
   collection = db.collection('attractions');
