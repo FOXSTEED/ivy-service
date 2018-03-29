@@ -4,6 +4,7 @@ services:
     build: ./
     depends_on:
     - 'database'
+    - 'redis'
     ports:
     - "3004:3004"
     volumes:
@@ -11,3 +12,11 @@ services:
 
   database:
     image: mongo
+
+  redis:
+    image: redis
+
+  driver:
+    build: .
+    links:
+      - redis
