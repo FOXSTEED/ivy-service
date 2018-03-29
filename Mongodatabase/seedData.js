@@ -64,8 +64,8 @@ function addToDb(id) {
     await insertBulk()
     
   })
-    .catch(() => {
-      console.log('something went wrong')
+    .catch((err) => {
+      console.log('something went wrong', err)
     })
 }
 
