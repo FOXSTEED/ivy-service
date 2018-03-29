@@ -3,7 +3,7 @@ const MongoClient = require('mongodb').MongoClient;
 let db;
 let collection;
 
-MongoClient.connect('mongodb://database/', { poolSize: 10 }).then((client) => {
+MongoClient.connect('mongodb://ec2-18-188-151-232.us-east-2.compute.amazonaws.com/', { poolSize: 10 }).then((client) => {
   console.log('pass')
   db = client.db('ivydatabase');
   collection = db.collection('attractions');
@@ -17,6 +17,7 @@ const getById = function getById(id, callback) {
   collection.find({ id: a }).toArray()
     .then((data) => {
       // console.timeEnd('time')
+      console.log('data',data)
       callback(null, data)
     })
     .catch((err) => {

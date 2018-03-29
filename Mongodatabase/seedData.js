@@ -34,7 +34,7 @@ function getTime() {
 
 
 function addToDb(id) {
-  MongoClient.connect('mongodb://database/').then(async (client) => {
+  MongoClient.connect('mongodb://ec2-18-188-151-232.us-east-2.compute.amazonaws.com/').then(async (client) => {
     const db = client.db('ivydatabase');
     const collection = db.collection('attractions');
     let count = 0
@@ -46,7 +46,7 @@ function addToDb(id) {
         })
       count += 1 
       if (insertTimes > count) {
-        console.log('inserting', count)
+        console.log('inserting ', count)
         insertBulk()
       } else {
         await collection.createIndex({ id: 1 })

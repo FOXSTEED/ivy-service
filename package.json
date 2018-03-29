@@ -24,7 +24,7 @@
     "seed-database": "node database/seed.js",
     "seed-database-postgres": "node SQLdatabase/massive-insert.js",
     "seed-database-mongodb": "node Mongodatabase/seedData.js",
-    "start": "npm run seed-database-mongodb && npm run-script serve",
+    "start": "npm run-script serve",
     "start-dev": " npm run serve-dev & npm run dev"
   },
   "dependencies": {

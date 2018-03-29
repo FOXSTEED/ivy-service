@@ -20,7 +20,7 @@ app.use(cors());
 const redis = require('redis');
 const client = redis.createClient({
     host: 'redis'
-});
+  });
 
 function cache(req, res, next) {
   const id = req.params.id
@@ -38,6 +38,7 @@ function cache(req, res, next) {
 
 function getData(req, res, next) {
   const requestId= req.params.id
+  // console.log(requestId,'requestId')
   mongoDatabase.getById(requestId, (err, data) => {
     if (err) {
       res.status(404).json({ message: 'No attraction' });
