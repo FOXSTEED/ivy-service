@@ -48,7 +48,7 @@ function getData(req, res, next) {
   });
 };
 
-app.get('/api/listings/:id/q-and-a', cache, getData);
+app.get('http://18.221.234.102:3004/api/listings/:id/q-and-a', cache, getData);
 
 
 
