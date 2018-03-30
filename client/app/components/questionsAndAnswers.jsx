@@ -23,7 +23,7 @@ export default class QuestionsAndAnswers extends React.Component {
     let path = window.location.pathname.split('/');
     let idFromPathname = Number(path[path.length-2])
     console.time()
-    fetch(`http://18.221.234.102:3004/api/listings/${this.props.ID || idFromPathname || 0}/q-and-a/`)
+    fetch(`http://18.221.200.27:3004/api/listings/${this.props.ID || idFromPathname || 0}/q-and-a/`)
       .then(res => res.json())
       .then((result) => {
         console.timeEnd()
